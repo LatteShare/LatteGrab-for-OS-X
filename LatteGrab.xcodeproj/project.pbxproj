@@ -10,6 +10,8 @@
 		6F6F38D41C699CE2005D89B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F38D31C699CE2005D89B8 /* AppDelegate.swift */; };
 		6F6F38D61C699CE2005D89B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F6F38D51C699CE2005D89B8 /* Assets.xcassets */; };
 		6F6F38D91C699CE2005D89B8 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F6F38D71C699CE2005D89B8 /* MainMenu.xib */; };
+		6F6F38E11C699D0B005D89B8 /* LatteShareConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F38E01C699D0B005D89B8 /* LatteShareConnection.swift */; };
+		6F6F38E41C699E5E005D89B8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F6F38E31C699E5E005D89B8 /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +20,8 @@
 		6F6F38D51C699CE2005D89B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F6F38D81C699CE2005D89B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		6F6F38DA1C699CE2005D89B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6F6F38E01C699D0B005D89B8 /* LatteShareConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatteShareConnection.swift; sourceTree = "<group>"; };
+		6F6F38E31C699E5E005D89B8 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -25,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F6F38E41C699E5E005D89B8 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -35,6 +40,7 @@
 			isa = PBXGroup;
 			children = (
 				6F6F38D21C699CE2005D89B8 /* LatteGrab */,
+				6F6F38E21C699E50005D89B8 /* Frameworks */,
 				6F6F38D11C699CE2005D89B8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -51,11 +57,20 @@
 			isa = PBXGroup;
 			children = (
 				6F6F38D31C699CE2005D89B8 /* AppDelegate.swift */,
+				6F6F38E01C699D0B005D89B8 /* LatteShareConnection.swift */,
 				6F6F38D51C699CE2005D89B8 /* Assets.xcassets */,
 				6F6F38D71C699CE2005D89B8 /* MainMenu.xib */,
 				6F6F38DA1C699CE2005D89B8 /* Info.plist */,
 			);
 			path = LatteGrab;
+			sourceTree = "<group>";
+		};
+		6F6F38E21C699E50005D89B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6F6F38E31C699E5E005D89B8 /* Alamofire.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -90,6 +105,7 @@
 				TargetAttributes = {
 					6F6F38CF1C699CE2005D89B8 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 29U224D2XX;
 					};
 				};
 			};
@@ -128,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F6F38E11C699D0B005D89B8 /* LatteShareConnection.swift in Sources */,
 				6F6F38D41C699CE2005D89B8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,7 +247,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = LatteGrab/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.edr.LatteGrab;
@@ -242,7 +264,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = LatteGrab/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.edr.LatteGrab;
