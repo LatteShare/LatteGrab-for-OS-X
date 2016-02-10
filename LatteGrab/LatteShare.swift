@@ -39,13 +39,21 @@ class LatteShare {
         }
     }
     
+    func hasAuthenticationDetails() -> Bool {
+        return username != nil && token != nil
+    }
+    
+    func newConnection() {
+        if username == nil || token == nil {
+            connection = LatteShareConnection(apiEndpoint: apiEndpoint)
+        } else {
+            connection = LatteShareConnection(apiEndpoint: apiEndpoint, apiUsername: username!, apiToken: token!)
+        }
+    }
+    
     func getConnection() -> LatteShareConnection? {
         if connection == nil {
-            if username == nil || token == nil {
-                connection = LatteShareConnection(apiEndpoint: apiEndpoint)
-            } else {
-                connection = LatteShareConnection(apiEndpoint: apiEndpoint, apiUsername: username!, apiToken: token!)
-            }
+            newConnection()
         }
         
         return connection

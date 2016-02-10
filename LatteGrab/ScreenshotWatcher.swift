@@ -45,17 +45,34 @@ class ScreenshotWatcher : DirectoryMonitorDelegate {
                     let attrNames = ExtendedAttributes.attributesNamesAtPath(fullElemPath);
                     
                     if attrNames.names != nil {
-                        print(attrNames.1)
-                        
                         if attrNames.names!.contains("com.apple.metadata:kMDItemIsScreenCapture") || attrNames.names!.contains("com.apple.metadata:kMDItemScreenCaptureGlobalRect") || attrNames.names!.contains("com.apple.metadata:kMDItemScreenCaptureType") {
                             LatteShare.sharedInstance.getConnection()?.uploadFile(fullElemPath, success: { url in
-                                print(url)
-                                }, failure: { error in
-                                    print(error)
+                                
+                                NSPasteboard.generalPasteboard().clearContents()
+                                NSPasteboard.generalPasteboard().writeObjects([url])
+                                
+                                let notification = NSUserNotification()
+                                
+                                notification.title = "Upload Successful!"
+                                notification.informativeText = "Your screenshot was successfully uploaded."
+                                notification.soundName = NSUserNotificationDefaultSoundName
+                                
+                                NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+                                
+                                try! NSFileManager.defaultManager().removeItemAtPath(fullElemPath)
+                                
+                            }, failure: { error in
+                                
+                                let notification = NSUserNotification()
+                                
+                                notification.title = "Upload Error!"
+                                notification.informativeText = error
+                                //  notification.soundName = NSUserNotificationDefaultSoundName
+                                
+                                NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+                                
                             })
                         }
-                    } else {
-                        print(attrNames.error)
                     }
                     
                     self.fileNamesAtPath = newFilesAtPath
