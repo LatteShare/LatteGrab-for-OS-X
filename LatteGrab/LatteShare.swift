@@ -8,8 +8,8 @@
 
 import Cocoa
 
-class LatteShare {
-    static let sharedInstance = LatteShare()
+public class LatteShare {
+    public static let sharedInstance = LatteShare()
     
     static let kAPIEndpointKey = "API Endpoint"
     
@@ -18,32 +18,36 @@ class LatteShare {
     
     var connection : LatteShareConnection?
     
-    var apiEndpoint : String
+    public var apiEndpoint : String
     
-    var username : String?
-    var token : String?
+    public var username : String?
+    public var token : String?
+    
+    var defaults: NSUserDefaults
     
     private init() {
-        if let e = NSUserDefaults.standardUserDefaults().objectForKey(LatteShare.kAPIEndpointKey) as? String {
+        defaults = NSUserDefaults(suiteName: "io.edr.LatteGrab.group")!
+        
+        if let e = defaults.objectForKey(LatteShare.kAPIEndpointKey) as? String {
             apiEndpoint = e
         } else {
             apiEndpoint = "https://grabpaw.com/api/v1/"
         }
         
-        if let u = NSUserDefaults.standardUserDefaults().objectForKey(LatteShare.kUsernameKey) as? String {
+        if let u = defaults.objectForKey(LatteShare.kUsernameKey) as? String {
             username = u
         }
         
-        if let t = NSUserDefaults.standardUserDefaults().objectForKey(LatteShare.kTokenKey) as? String {
+        if let t = defaults.objectForKey(LatteShare.kTokenKey) as? String {
             token = t
         }
     }
     
-    func hasAuthenticationDetails() -> Bool {
+    public func hasAuthenticationDetails() -> Bool {
         return username != nil && token != nil
     }
     
-    func newConnection() {
+    public func newConnection() {
         if username == nil || token == nil {
             connection = LatteShareConnection(apiEndpoint: apiEndpoint)
         } else {
@@ -51,7 +55,7 @@ class LatteShare {
         }
     }
     
-    func getConnection() -> LatteShareConnection? {
+    public func getConnection() -> LatteShareConnection? {
         if connection == nil {
             newConnection()
         }
@@ -59,11 +63,11 @@ class LatteShare {
         return connection
     }
     
-    func save() {
-        NSUserDefaults.standardUserDefaults().setObject(apiEndpoint, forKey: LatteShare.kAPIEndpointKey)
-        NSUserDefaults.standardUserDefaults().setObject(username, forKey: LatteShare.kUsernameKey)
-        NSUserDefaults.standardUserDefaults().setObject(token, forKey: LatteShare.kTokenKey)
+    public func save() {
+        defaults.setObject(apiEndpoint, forKey: LatteShare.kAPIEndpointKey)
+        defaults.setObject(username, forKey: LatteShare.kUsernameKey)
+        defaults.setObject(token, forKey: LatteShare.kTokenKey)
         
-        NSUserDefaults.standardUserDefaults().synchronize()
+        defaults.synchronize()
     }
 }

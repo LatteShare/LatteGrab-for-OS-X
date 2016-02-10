@@ -11,17 +11,43 @@
 		6F6F38D41C699CE2005D89B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F38D31C699CE2005D89B8 /* AppDelegate.swift */; };
 		6F6F38D61C699CE2005D89B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F6F38D51C699CE2005D89B8 /* Assets.xcassets */; };
 		6F6F38D91C699CE2005D89B8 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F6F38D71C699CE2005D89B8 /* MainMenu.xib */; };
-		6F6F38E11C699D0B005D89B8 /* LatteShareConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F38E01C699D0B005D89B8 /* LatteShareConnection.swift */; };
-		6F6F38E41C699E5E005D89B8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F6F38E31C699E5E005D89B8 /* Alamofire.framework */; };
-		6F6F38E61C6A2AAD005D89B8 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F6F38E51C6A2AAD005D89B8 /* SwiftyJSON.framework */; };
-		6F6F38E81C6A5402005D89B8 /* LatteShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F38E71C6A5402005D89B8 /* LatteShare.swift */; };
 		6F6F38EA1C6A564A005D89B8 /* DirectoryMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F38E91C6A564A005D89B8 /* DirectoryMonitor.swift */; };
 		6F6F38ED1C6A56A3005D89B8 /* ScreenshotWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F38EC1C6A56A3005D89B8 /* ScreenshotWatcher.swift */; };
-		6F6F38EF1C6A6CAC005D89B8 /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6F6F38E31C699E5E005D89B8 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6F6F38F01C6A6CAC005D89B8 /* SwiftyJSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6F6F38E51C6A2AAD005D89B8 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6F6F38F61C6A7399005D89B8 /* ExtendedAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F38F51C6A7399005D89B8 /* ExtendedAttributes.swift */; };
 		6FB58EE41C6AC2A5003DA17A /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB58EE31C6AC2A5003DA17A /* AuthenticationController.swift */; };
+		6FBF96791C6B6D550039FF4A /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 6FBF96781C6B6D550039FF4A /* icon.icns */; };
+		6FBF967C1C6B6D550039FF4A /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBF967B1C6B6D550039FF4A /* ShareViewController.swift */; };
+		6FBF967F1C6B6D550039FF4A /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FBF967D1C6B6D550039FF4A /* ShareViewController.xib */; };
+		6FBF96831C6B6D550039FF4A /* FinderShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6FBF96751C6B6D550039FF4A /* FinderShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6FBF96911C6B6EEF0039FF4A /* LatteShare.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FBF96901C6B6EEF0039FF4A /* LatteShare.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FBF96951C6B6EEF0039FF4A /* LatteShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FBF968E1C6B6EEF0039FF4A /* LatteShare.framework */; };
+		6FBF96961C6B6EEF0039FF4A /* LatteShare.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6FBF968E1C6B6EEF0039FF4A /* LatteShare.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6FBF969A1C6B6F9A0039FF4A /* LatteShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F38E71C6A5402005D89B8 /* LatteShare.swift */; };
+		6FBF969B1C6B6F9C0039FF4A /* LatteShareConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F38E01C699D0B005D89B8 /* LatteShareConnection.swift */; };
+		6FBF969C1C6B70140039FF4A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F6F38E31C699E5E005D89B8 /* Alamofire.framework */; };
+		6FBF969D1C6B70140039FF4A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F6F38E51C6A2AAD005D89B8 /* SwiftyJSON.framework */; };
+		6FBF96A01C6B71870039FF4A /* LatteShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FBF968E1C6B6EEF0039FF4A /* LatteShare.framework */; };
+		6FBF96A21C6B71980039FF4A /* LatteShare.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6FBF968E1C6B6EEF0039FF4A /* LatteShare.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6FBF96A41C6B73E20039FF4A /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6F6F38E31C699E5E005D89B8 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6FBF96A51C6B73E20039FF4A /* SwiftyJSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6F6F38E51C6A2AAD005D89B8 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6FBF96811C6B6D550039FF4A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6F6F38C81C699CE2005D89B8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6FBF96741C6B6D550039FF4A;
+			remoteInfo = FinderShareExtension;
+		};
+		6FBF96931C6B6EEF0039FF4A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6F6F38C81C699CE2005D89B8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6FBF968D1C6B6EEF0039FF4A;
+			remoteInfo = LatteShare;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		6F6F38EE1C6A6CA4005D89B8 /* CopyFiles */ = {
@@ -30,8 +56,39 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6F6F38EF1C6A6CAC005D89B8 /* Alamofire.framework in CopyFiles */,
-				6F6F38F01C6A6CAC005D89B8 /* SwiftyJSON.framework in CopyFiles */,
+				6FBF96961C6B6EEF0039FF4A /* LatteShare.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FBF96871C6B6D550039FF4A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6FBF96831C6B6D550039FF4A /* FinderShareExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FBF96A11C6B718C0039FF4A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6FBF96A21C6B71980039FF4A /* LatteShare.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FBF96A31C6B73DB0039FF4A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6FBF96A41C6B73E20039FF4A /* Alamofire.framework in CopyFiles */,
+				6FBF96A51C6B73E20039FF4A /* SwiftyJSON.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,15 +101,25 @@
 		6F6F38D51C699CE2005D89B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F6F38D81C699CE2005D89B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		6F6F38DA1C699CE2005D89B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6F6F38E01C699D0B005D89B8 /* LatteShareConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatteShareConnection.swift; sourceTree = "<group>"; };
+		6F6F38E01C699D0B005D89B8 /* LatteShareConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LatteShareConnection.swift; path = ../LatteGrab/LatteShareConnection.swift; sourceTree = "<group>"; };
 		6F6F38E31C699E5E005D89B8 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = "<group>"; };
 		6F6F38E51C6A2AAD005D89B8 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/Mac/SwiftyJSON.framework; sourceTree = "<group>"; };
-		6F6F38E71C6A5402005D89B8 /* LatteShare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatteShare.swift; sourceTree = "<group>"; };
+		6F6F38E71C6A5402005D89B8 /* LatteShare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LatteShare.swift; path = ../LatteGrab/LatteShare.swift; sourceTree = "<group>"; };
 		6F6F38E91C6A564A005D89B8 /* DirectoryMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryMonitor.swift; sourceTree = "<group>"; };
 		6F6F38EC1C6A56A3005D89B8 /* ScreenshotWatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotWatcher.swift; sourceTree = "<group>"; };
 		6F6F38F11C6A7380005D89B8 /* LatteGrab-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LatteGrab-Bridging-Header.h"; sourceTree = "<group>"; };
 		6F6F38F51C6A7399005D89B8 /* ExtendedAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendedAttributes.swift; sourceTree = "<group>"; };
 		6FB58EE31C6AC2A5003DA17A /* AuthenticationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
+		6FBF96751C6B6D550039FF4A /* FinderShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FinderShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FBF96781C6B6D550039FF4A /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
+		6FBF967A1C6B6D550039FF4A /* FinderShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FinderShareExtension.entitlements; sourceTree = "<group>"; };
+		6FBF967B1C6B6D550039FF4A /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		6FBF967E1C6B6D550039FF4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ShareViewController.xib; sourceTree = "<group>"; };
+		6FBF96801C6B6D550039FF4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6FBF96881C6B6D900039FF4A /* LatteGrab.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LatteGrab.entitlements; sourceTree = "<group>"; };
+		6FBF968E1C6B6EEF0039FF4A /* LatteShare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LatteShare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FBF96901C6B6EEF0039FF4A /* LatteShare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LatteShare.h; sourceTree = "<group>"; };
+		6FBF96921C6B6EEF0039FF4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +127,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F6F38E61C6A2AAD005D89B8 /* SwiftyJSON.framework in Frameworks */,
-				6F6F38E41C699E5E005D89B8 /* Alamofire.framework in Frameworks */,
+				6FBF96951C6B6EEF0039FF4A /* LatteShare.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FBF96721C6B6D550039FF4A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FBF96A01C6B71870039FF4A /* LatteShare.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FBF968A1C6B6EEF0039FF4A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FBF969C1C6B70140039FF4A /* Alamofire.framework in Frameworks */,
+				6FBF969D1C6B70140039FF4A /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				6F6F38D21C699CE2005D89B8 /* LatteGrab */,
+				6FBF96761C6B6D550039FF4A /* FinderShareExtension */,
+				6FBF968F1C6B6EEF0039FF4A /* LatteShare */,
 				6F6F38E21C699E50005D89B8 /* Frameworks */,
 				6F6F38D11C699CE2005D89B8 /* Products */,
 			);
@@ -81,6 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				6F6F38D01C699CE2005D89B8 /* LatteGrab.app */,
+				6FBF96751C6B6D550039FF4A /* FinderShareExtension.appex */,
+				6FBF968E1C6B6EEF0039FF4A /* LatteShare.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -88,11 +175,10 @@
 		6F6F38D21C699CE2005D89B8 /* LatteGrab */ = {
 			isa = PBXGroup;
 			children = (
+				6FBF96881C6B6D900039FF4A /* LatteGrab.entitlements */,
 				6F6F38EB1C6A567B005D89B8 /* Third-Party */,
 				6F6F38D31C699CE2005D89B8 /* AppDelegate.swift */,
 				6FB58EE31C6AC2A5003DA17A /* AuthenticationController.swift */,
-				6F6F38E71C6A5402005D89B8 /* LatteShare.swift */,
-				6F6F38E01C699D0B005D89B8 /* LatteShareConnection.swift */,
 				6F48E2091C6ABC3C006DA2E6 /* StatusBarController.swift */,
 				6F6F38EC1C6A56A3005D89B8 /* ScreenshotWatcher.swift */,
 				6F6F38F11C6A7380005D89B8 /* LatteGrab-Bridging-Header.h */,
@@ -121,7 +207,49 @@
 			name = "Third-Party";
 			sourceTree = "<group>";
 		};
+		6FBF96761C6B6D550039FF4A /* FinderShareExtension */ = {
+			isa = PBXGroup;
+			children = (
+				6FBF967B1C6B6D550039FF4A /* ShareViewController.swift */,
+				6FBF967D1C6B6D550039FF4A /* ShareViewController.xib */,
+				6FBF96801C6B6D550039FF4A /* Info.plist */,
+				6FBF96771C6B6D550039FF4A /* Supporting Files */,
+			);
+			path = FinderShareExtension;
+			sourceTree = "<group>";
+		};
+		6FBF96771C6B6D550039FF4A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6FBF96781C6B6D550039FF4A /* icon.icns */,
+				6FBF967A1C6B6D550039FF4A /* FinderShareExtension.entitlements */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6FBF968F1C6B6EEF0039FF4A /* LatteShare */ = {
+			isa = PBXGroup;
+			children = (
+				6FBF96901C6B6EEF0039FF4A /* LatteShare.h */,
+				6F6F38E71C6A5402005D89B8 /* LatteShare.swift */,
+				6F6F38E01C699D0B005D89B8 /* LatteShareConnection.swift */,
+				6FBF96921C6B6EEF0039FF4A /* Info.plist */,
+			);
+			path = LatteShare;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		6FBF968B1C6B6EEF0039FF4A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FBF96911C6B6EEF0039FF4A /* LatteShare.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		6F6F38CF1C699CE2005D89B8 /* LatteGrab */ = {
@@ -132,15 +260,55 @@
 				6F6F38CD1C699CE2005D89B8 /* Frameworks */,
 				6F6F38CE1C699CE2005D89B8 /* Resources */,
 				6F6F38EE1C6A6CA4005D89B8 /* CopyFiles */,
+				6FBF96871C6B6D550039FF4A /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				6FBF96821C6B6D550039FF4A /* PBXTargetDependency */,
+				6FBF96941C6B6EEF0039FF4A /* PBXTargetDependency */,
 			);
 			name = LatteGrab;
 			productName = LatteGrab;
 			productReference = 6F6F38D01C699CE2005D89B8 /* LatteGrab.app */;
 			productType = "com.apple.product-type.application";
+		};
+		6FBF96741C6B6D550039FF4A /* FinderShareExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6FBF96861C6B6D550039FF4A /* Build configuration list for PBXNativeTarget "FinderShareExtension" */;
+			buildPhases = (
+				6FBF96711C6B6D550039FF4A /* Sources */,
+				6FBF96721C6B6D550039FF4A /* Frameworks */,
+				6FBF96731C6B6D550039FF4A /* Resources */,
+				6FBF96A11C6B718C0039FF4A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FinderShareExtension;
+			productName = FinderShareExtension;
+			productReference = 6FBF96751C6B6D550039FF4A /* FinderShareExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		6FBF968D1C6B6EEF0039FF4A /* LatteShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6FBF96971C6B6EEF0039FF4A /* Build configuration list for PBXNativeTarget "LatteShare" */;
+			buildPhases = (
+				6FBF96891C6B6EEF0039FF4A /* Sources */,
+				6FBF968A1C6B6EEF0039FF4A /* Frameworks */,
+				6FBF968B1C6B6EEF0039FF4A /* Headers */,
+				6FBF968C1C6B6EEF0039FF4A /* Resources */,
+				6FBF96A31C6B73DB0039FF4A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LatteShare;
+			productName = LatteShare;
+			productReference = 6FBF968E1C6B6EEF0039FF4A /* LatteShare.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -153,6 +321,27 @@
 				ORGANIZATIONNAME = "Eduardo Almeida";
 				TargetAttributes = {
 					6F6F38CF1C699CE2005D89B8 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 29U224D2XX;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 1;
+							};
+						};
+					};
+					6FBF96741C6B6D550039FF4A = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 29U224D2XX;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 1;
+							};
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
+					6FBF968D1C6B6EEF0039FF4A = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 29U224D2XX;
 					};
@@ -172,6 +361,8 @@
 			projectRoot = "";
 			targets = (
 				6F6F38CF1C699CE2005D89B8 /* LatteGrab */,
+				6FBF96741C6B6D550039FF4A /* FinderShareExtension */,
+				6FBF968D1C6B6EEF0039FF4A /* LatteShare */,
 			);
 		};
 /* End PBXProject section */
@@ -186,6 +377,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6FBF96731C6B6D550039FF4A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FBF967F1C6B6D550039FF4A /* ShareViewController.xib in Resources */,
+				6FBF96791C6B6D550039FF4A /* icon.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FBF968C1C6B6EEF0039FF4A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -193,9 +400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F6F38E11C699D0B005D89B8 /* LatteShareConnection.swift in Sources */,
 				6F48E20A1C6ABC3C006DA2E6 /* StatusBarController.swift in Sources */,
-				6F6F38E81C6A5402005D89B8 /* LatteShare.swift in Sources */,
 				6F6F38EA1C6A564A005D89B8 /* DirectoryMonitor.swift in Sources */,
 				6F6F38ED1C6A56A3005D89B8 /* ScreenshotWatcher.swift in Sources */,
 				6FB58EE41C6AC2A5003DA17A /* AuthenticationController.swift in Sources */,
@@ -204,7 +409,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6FBF96711C6B6D550039FF4A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FBF967C1C6B6D550039FF4A /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FBF96891C6B6EEF0039FF4A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FBF969B1C6B6F9C0039FF4A /* LatteShareConnection.swift in Sources */,
+				6FBF969A1C6B6F9A0039FF4A /* LatteShare.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6FBF96821C6B6D550039FF4A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6FBF96741C6B6D550039FF4A /* FinderShareExtension */;
+			targetProxy = 6FBF96811C6B6D550039FF4A /* PBXContainerItemProxy */;
+		};
+		6FBF96941C6B6EEF0039FF4A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6FBF968D1C6B6EEF0039FF4A /* LatteShare */;
+			targetProxy = 6FBF96931C6B6EEF0039FF4A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6F6F38D71C699CE2005D89B8 /* MainMenu.xib */ = {
@@ -213,6 +448,14 @@
 				6F6F38D81C699CE2005D89B8 /* Base */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		6FBF967D1C6B6D550039FF4A /* ShareViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6FBF967E1C6B6D550039FF4A /* Base */,
+			);
+			name = ShareViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -303,8 +546,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = LatteGrab/LatteGrab.entitlements;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
@@ -323,8 +568,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = LatteGrab/LatteGrab.entitlements;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
@@ -334,6 +581,88 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.edr.LatteGrab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "LatteGrab/LatteGrab-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		6FBF96841C6B6D550039FF4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = FinderShareExtension/FinderShareExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = FinderShareExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.edr.LatteGrab.FinderShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		6FBF96851C6B6D550039FF4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = FinderShareExtension/FinderShareExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = FinderShareExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.edr.LatteGrab.FinderShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		6FBF96981C6B6EEF0039FF4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = LatteShare/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.edr.LatteShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		6FBF96991C6B6EEF0039FF4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = LatteShare/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.edr.LatteShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -357,6 +686,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		6FBF96861C6B6D550039FF4A /* Build configuration list for PBXNativeTarget "FinderShareExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FBF96841C6B6D550039FF4A /* Debug */,
+				6FBF96851C6B6D550039FF4A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		6FBF96971C6B6EEF0039FF4A /* Build configuration list for PBXNativeTarget "LatteShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FBF96981C6B6EEF0039FF4A /* Debug */,
+				6FBF96991C6B6EEF0039FF4A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

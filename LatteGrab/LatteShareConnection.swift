@@ -9,27 +9,27 @@
 import Alamofire
 import SwiftyJSON
 
-class LatteShareConnection {
+public class LatteShareConnection {
     
     let endpoint: String
     var username: String?
     var token: String?
     
-    enum APIError : ErrorType {
+    public enum APIError : ErrorType {
         case NotLoggedIn
     }
     
-    init(apiEndpoint: String) {
+    public init(apiEndpoint: String) {
         endpoint = apiEndpoint
     }
     
-    init(apiEndpoint: String, apiUsername: String, apiToken: String) {
+    public init(apiEndpoint: String, apiUsername: String, apiToken: String) {
         endpoint = apiEndpoint
         username = apiUsername
         token = apiToken
     }
     
-    func validateToken(validated: Bool -> ()) throws {
+    public func validateToken(validated: Bool -> ()) throws {
         if username == nil || token == nil {
             throw APIError.NotLoggedIn
         }
@@ -47,7 +47,7 @@ class LatteShareConnection {
         }
     }
     
-    func generateToken(username: String, password: String, success: String -> (), failure: String -> ()) {
+    public func generateToken(username: String, password: String, success: String -> (), failure: String -> ()) {
         Alamofire.request(.POST, endpoint + "key", parameters: [ "username": username, "password": password ]).responseJSON() { response in
             if let value = response.result.value {
                 print("JSON: \(value)")
@@ -72,7 +72,7 @@ class LatteShareConnection {
         }
     }
     
-    func uploadFile(filePath: String, success: String -> (), failure: String -> ()) {
+    public func uploadFile(filePath: String, success: String -> (), failure: String -> ()) {
         let parameters = [
             "username": username!,
             "apiKey": token!
@@ -119,12 +119,12 @@ class LatteShareConnection {
         })
     }
     
-    func createGroup(fileIdentifiers: [String], success: String -> (), failure: String -> ()) throws {
+    public func createGroup(fileIdentifiers: [String], success: String -> (), failure: String -> ()) throws {
         if username == nil || token == nil {
             throw APIError.NotLoggedIn;
         }
         
-        Alamofire.request(.POST, endpoint + "group", parameters: [ "username": username!, "apiKey": token!, "ids": fileIdentifiers ]).responseJSON() { response in
+        Alamofire.request(.POST, endpoint + "group", parameters: [ "username": username!, "apiKey": token!, "ids": JSON(fileIdentifiers).rawString()! ]).responseJSON() { response in
             if let value = response.result.value {
                 print("JSON: \(value)")
                 
@@ -145,7 +145,7 @@ class LatteShareConnection {
         }
     }
     
-    func deleteFile(fileIdentifier: String, success: () -> (), failure: String -> ()) throws {
+    public func deleteFile(fileIdentifier: String, success: () -> (), failure: String -> ()) throws {
         if username == nil || token == nil {
             throw APIError.NotLoggedIn;
         }

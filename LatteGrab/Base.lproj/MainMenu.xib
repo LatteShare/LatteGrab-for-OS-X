@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
@@ -16,6 +16,9 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <customObject id="1aF-kW-GEQ" customClass="AuthenticationController" customModule="LatteGrab" customModuleProvider="target">
             <connections>
+                <outlet property="passwordField" destination="617-Ke-Y0n" id="TRh-dO-rDj"/>
+                <outlet property="serverField" destination="MGw-oG-hdo" id="hkY-mv-hFs"/>
+                <outlet property="usernameField" destination="g4U-8B-DLu" id="2af-Nq-T6a"/>
                 <outlet property="window" destination="uy4-5W-CbO" id="LPS-gT-h7O"/>
             </connections>
         </customObject>
@@ -76,7 +79,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="283" y="305" width="735" height="263"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="veR-gL-li6">
                 <rect key="frame" x="0.0" y="0.0" width="735" height="263"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -88,14 +91,6 @@
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g4U-8B-DLu">
                         <rect key="frame" x="457" y="178" width="228" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="hxu-Z4-kde">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5mO-nW-ZUa">
-                        <rect key="frame" x="457" y="144" width="228" height="22"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="7FO-C9-R4H">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -153,9 +148,20 @@
                             <action selector="signUp:" target="1aF-kW-GEQ" id="8I2-GQ-Nya"/>
                         </connections>
                     </button>
+                    <secureTextField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="617-Ke-Y0n">
+                        <rect key="frame" x="457" y="144" width="228" height="22"/>
+                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="y1a-xT-FgK">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            <allowedInputSourceLocales>
+                                <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                            </allowedInputSourceLocales>
+                        </secureTextFieldCell>
+                    </secureTextField>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="1112.5" y="507.5"/>
+            <point key="canvasLocation" x="1097.5" y="410.5"/>
         </window>
     </objects>
     <resources>

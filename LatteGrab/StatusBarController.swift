@@ -15,8 +15,10 @@ class StatusBarController: NSObject {
     @IBOutlet weak var recentFilesMenuItem : NSMenuItem?
     @IBOutlet weak var recentItemMenuItem : NSMenuItem?
     
+    var statusItem : NSStatusItem!
+    
     override func awakeFromNib() {
-        let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
+        statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
         
         statusItem.title = "LG"
         statusItem.menu = menu

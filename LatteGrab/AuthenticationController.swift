@@ -8,6 +8,8 @@
 
 import Cocoa
 
+import LatteShare
+
 class AuthenticationController: NSObject {
     
     @IBOutlet weak var window : NSWindow!

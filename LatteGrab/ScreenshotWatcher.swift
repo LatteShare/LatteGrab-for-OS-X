@@ -8,6 +8,8 @@
 
 import Cocoa
 
+import LatteShare
+
 class ScreenshotWatcher : DirectoryMonitorDelegate {
     let directoryMonitor: DirectoryMonitor
     
@@ -67,10 +69,8 @@ class ScreenshotWatcher : DirectoryMonitorDelegate {
                                 
                                 notification.title = "Upload Error!"
                                 notification.informativeText = error
-                                //  notification.soundName = NSUserNotificationDefaultSoundName
                                 
                                 NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
-                                
                             })
                         }
                     }
