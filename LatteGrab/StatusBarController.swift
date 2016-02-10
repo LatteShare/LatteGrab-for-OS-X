@@ -10,10 +10,10 @@ import Cocoa
 
 class StatusBarController: NSObject {
     
-    @IBOutlet weak var menu : NSMenu?
+    @IBOutlet weak var menu : NSMenu!
+    @IBOutlet weak var recentFilesMenu : NSMenu!
     
     @IBOutlet weak var recentFilesMenuItem : NSMenuItem?
-    @IBOutlet weak var recentItemMenuItem : NSMenuItem?
     
     var statusItem : NSStatusItem!
     
@@ -22,6 +22,30 @@ class StatusBarController: NSObject {
         
         statusItem.title = "LG"
         statusItem.menu = menu
+        
+        recentFilesMenu.addItem(createMenuItemForFile("foo"))
+    }
+    
+    func createMenuItemForFile(url: String) -> NSMenuItem {
+        let menuItem = NSMenuItem(title: url, action: nil, keyEquivalent: "")
+        
+        let subMenu = NSMenu()
+        
+        subMenu.addItemWithTitle("Copy URL", action: Selector("copyURLClicked:"), keyEquivalent: "")?.target = self
+        subMenu.addItem(NSMenuItem.separatorItem())
+        subMenu.addItemWithTitle("Delete", action: Selector("deleteClicked:"), keyEquivalent: "")?.target = self
+        
+        menuItem.submenu = subMenu
+        
+        return menuItem
+    }
+    
+    func copyURLClicked(sender: NSMenuItem) {
+        print("Copy URL clicked from \(sender).")
+    }
+    
+    func deleteClicked(sender: NSMenuItem) {
+        print("Delete clicked from \(sender).")
     }
     
     @IBAction func quit(sender: NSMenuItem) {

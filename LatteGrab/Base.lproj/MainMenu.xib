@@ -25,8 +25,8 @@
         <customObject id="eK5-AC-qKR" customClass="StatusBarController" customModule="LatteGrab" customModuleProvider="target">
             <connections>
                 <outlet property="menu" destination="0SE-yF-BE1" id="YAi-Td-4gY"/>
+                <outlet property="recentFilesMenu" destination="aAo-Vh-Rdo" id="7Xp-J5-JbV"/>
                 <outlet property="recentFilesMenuItem" destination="Bl2-fo-AC2" id="k9Y-pB-jIU"/>
-                <outlet property="recentItemMenuItem" destination="Gt0-tT-4Gm" id="fzq-AK-var"/>
             </connections>
         </customObject>
         <menu id="0SE-yF-BE1">
@@ -40,24 +40,7 @@
                 <menuItem isSeparatorItem="YES" id="kcy-Ys-eby"/>
                 <menuItem title="Recent Files" id="Bl2-fo-AC2">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Recent Files" id="aAo-Vh-Rdo">
-                        <items>
-                            <menuItem title="Recent Item" id="Gt0-tT-4Gm">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Recent Item" id="cIq-I8-tpp">
-                                    <items>
-                                        <menuItem title="Copy Link" id="01f-8H-w5H">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="FYB-mZ-rcG"/>
-                                        <menuItem title="Delete" id="cxG-u2-p4v">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                        </menuItem>
-                                    </items>
-                                </menu>
-                            </menuItem>
-                        </items>
-                    </menu>
+                    <menu key="submenu" title="Recent Files" id="aAo-Vh-Rdo"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="4HQ-vs-Xji"/>
                 <menuItem title="Settings" id="cvh-ZD-jtA">
