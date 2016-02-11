@@ -58,9 +58,9 @@ class ShareViewController: NSViewController, NSTableViewDataSource {
                         self.filePaths.append(url.path!)
                         self.fileNames.append(NSString(string: url.path!).lastPathComponent)
                         
-                        dispatch_async(dispatch_get_main_queue(), {
+                        dispatch_async(dispatch_get_main_queue()) {
                             self.updateUI()
-                        })
+                        }
                     }
                 })
             }
@@ -110,6 +110,11 @@ class ShareViewController: NSViewController, NSTableViewDataSource {
                 alert.informativeText = "The link to your file is now in your clipboard."
                 
                 alert.runModal()
+                
+                let ri = RecentItems()
+                
+                ri.addRecentItem(identifier: url, date: NSDate())
+                ri.save()
                 
                 self.extensionContext!.completeRequestReturningItems(outputItems, completionHandler: nil)
             }, failure: { error in
@@ -166,6 +171,11 @@ class ShareViewController: NSViewController, NSTableViewDataSource {
             alert.informativeText = "The link to your files group is now in your clipboard."
             
             alert.runModal()
+            
+            let ri = RecentItems()
+            
+            ri.addRecentItem(identifier: url, date: NSDate())
+            ri.save()
             
             self.extensionContext!.completeRequestReturningItems(outputItems, completionHandler: nil)
         }, failure: { error in

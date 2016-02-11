@@ -10,6 +10,10 @@ import Cocoa
 
 import LatteShare
 
+protocol ScreenshotWatcherDelegate {
+    func screenshotUploaded()
+}
+
 class ScreenshotWatcher : DirectoryMonitorDelegate {
     let directoryMonitor: DirectoryMonitor
     
@@ -17,6 +21,8 @@ class ScreenshotWatcher : DirectoryMonitorDelegate {
     var fileNamesAtPath: [String] = []
     
     var directoryToWatch : String
+    
+    var delegate : ScreenshotWatcherDelegate?
     
     init() {
         directoryToWatch = (unexpandedDirectoryToWatch as NSString).stringByExpandingTildeInPath
@@ -60,6 +66,13 @@ class ScreenshotWatcher : DirectoryMonitorDelegate {
                                 notification.soundName = NSUserNotificationDefaultSoundName
                                 
                                 NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+                                
+                                let ri = RecentItems()
+                                
+                                ri.addRecentItem(identifier: url, date: NSDate())
+                                ri.save()
+                                
+                                self.delegate?.screenshotUploaded()
                                 
                                 try! NSFileManager.defaultManager().removeItemAtPath(fullElemPath)
                                 

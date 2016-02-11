@@ -10,6 +10,10 @@ import Cocoa
 
 import LatteShare
 
+protocol AuthenticationChangeDelegate {
+    func authenticationStateDidChange(loggedIn loggedIn: Bool)
+}
+
 class AuthenticationController: NSObject {
     
     @IBOutlet weak var window : NSWindow!
@@ -20,11 +24,17 @@ class AuthenticationController: NSObject {
     
     @IBOutlet weak var loginButton : NSButton!
     
+    var delegate : AuthenticationChangeDelegate?
+    
     override func awakeFromNib() {
         if !LatteShare.sharedInstance.hasAuthenticationDetails() {
             window.makeKeyAndOrderFront(self)
             
             window.level = Int(CGWindowLevelForKey(.FloatingWindowLevelKey))
+            
+            delegate?.authenticationStateDidChange(loggedIn: false)
+        } else {
+            delegate?.authenticationStateDidChange(loggedIn: true)
         }
     }
     
@@ -61,6 +71,8 @@ class AuthenticationController: NSObject {
             
             self.loginButton.enabled = true
             
+            self.delegate?.authenticationStateDidChange(loggedIn: true)
+            
             self.window.close()
             
         }, failure: { error in
@@ -73,6 +85,8 @@ class AuthenticationController: NSObject {
             alert.runModal()
             
             self.loginButton.enabled = true
+            
+            self.delegate?.authenticationStateDidChange(loggedIn: false)
             
         })
     }

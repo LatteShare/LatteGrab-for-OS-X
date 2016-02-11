@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
@@ -12,9 +12,14 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="LatteGrab" customModuleProvider="target"/>
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="LatteGrab" customModuleProvider="target">
+            <connections>
+                <outlet property="ac" destination="1aF-kW-GEQ" id="01Z-ej-m7A"/>
+                <outlet property="sbc" destination="eK5-AC-qKR" id="5yt-PF-PRF"/>
+            </connections>
+        </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-        <customObject id="1aF-kW-GEQ" customClass="AuthenticationController" customModule="LatteGrab" customModuleProvider="target">
+        <customObject id="1aF-kW-GEQ" userLabel="Auth Controller" customClass="AuthenticationController" customModule="LatteGrab" customModuleProvider="target">
             <connections>
                 <outlet property="passwordField" destination="617-Ke-Y0n" id="TRh-dO-rDj"/>
                 <outlet property="serverField" destination="MGw-oG-hdo" id="hkY-mv-hFs"/>
@@ -22,7 +27,7 @@
                 <outlet property="window" destination="uy4-5W-CbO" id="LPS-gT-h7O"/>
             </connections>
         </customObject>
-        <customObject id="eK5-AC-qKR" customClass="StatusBarController" customModule="LatteGrab" customModuleProvider="target">
+        <customObject id="eK5-AC-qKR" userLabel="SB Controller" customClass="StatusBarController" customModule="LatteGrab" customModuleProvider="target">
             <connections>
                 <outlet property="loggedInMenuItem" destination="Dcb-qp-OxV" id="L1F-Nf-EHP"/>
                 <outlet property="menu" destination="0SE-yF-BE1" id="YAi-Td-4gY"/>
@@ -68,7 +73,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="283" y="305" width="735" height="263"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="veR-gL-li6">
                 <rect key="frame" x="0.0" y="0.0" width="735" height="263"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -156,7 +161,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" texturedBackground="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="283" y="305" width="480" height="270"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="1ds-bC-Rbw">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -167,11 +172,11 @@
                         <tabViewItems>
                             <tabViewItem label="General" identifier="1" id="eeQ-fy-uv1">
                                 <view key="view" ambiguous="YES" id="A4l-IN-eZh">
-                                    <rect key="frame" x="10" y="33" width="434" height="208"/>
+                                    <rect key="frame" x="10" y="33" width="192" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q6f-aq-vqt">
-                                            <rect key="frame" x="15" y="178" width="404" height="18"/>
+                                            <rect key="frame" x="15" y="-30" width="404" height="18"/>
                                             <buttonCell key="cell" type="check" title="Open at Login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="GVT-AF-liq">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>

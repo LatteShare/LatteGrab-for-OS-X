@@ -11,14 +11,18 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-    var ssw : ScreenshotWatcher?
+    var ssw : ScreenshotWatcher!
+    
+    @IBOutlet var sbc : StatusBarController!
+    @IBOutlet var ac : AuthenticationController!
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        // Insert code here to initialize your application
-        
         ssw = ScreenshotWatcher()
         
-        ssw!.start()
+        ssw.start()
+        
+        ssw.delegate = sbc
+        ac.delegate = sbc
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {

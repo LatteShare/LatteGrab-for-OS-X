@@ -68,13 +68,41 @@ public class RecentItems {
     
     public func save() {
         defaults.setObject(NSKeyedArchiver.archivedDataWithRootObject(recentItems), forKey: RecentItems.kRecentItemsKey)
+        
+        defaults.synchronize()
     }
     
     public func getRecentItems(maxItems maxItems: Int) -> [RecentItem] {
         if maxItems == -1 || maxItems > recentItems.count {
-            return recentItems
+            return recentItems.reverse()
         }
         
-        return Array(recentItems.suffix(maxItems))
+        return Array(recentItems.suffix(maxItems)).reverse()
+    }
+    
+    public func addRecentItem(identifier id: String, date: NSDate) {
+        recentItems.append(RecentItem(identifier: id, dateUploaded: date))
+        
+        save()
+    }
+    
+    public func addRecentItem(item: RecentItem) {
+        recentItems.append(item)
+        
+        save()
+    }
+    
+    public func removeRecentItem(item: RecentItem) -> Bool {
+        for index in 0 ... recentItems.count - 1 {
+            if item.id == recentItems[index].id {
+                recentItems.removeAtIndex(index)
+                
+                save()
+                
+                return true
+            }
+        }
+        
+        return false
     }
 }

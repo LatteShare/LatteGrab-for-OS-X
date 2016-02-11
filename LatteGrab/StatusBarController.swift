@@ -10,7 +10,7 @@ import Cocoa
 
 import LatteShare
 
-class StatusBarController: NSObject {
+class StatusBarController: NSObject, ScreenshotWatcherDelegate, AuthenticationChangeDelegate {
     
     @IBOutlet weak var settingsWindow : NSWindow!
     
@@ -35,8 +35,8 @@ class StatusBarController: NSObject {
         
         let ri = RecentItems()
         
-        for item in ri.getRecentItems(maxItems: -1) {
-            createMenuItemForFile(item)
+        for item in ri.getRecentItems(maxItems: 5) {
+            recentFilesMenu.addItem(createMenuItemForFile(item))
         }
         
         if let u = LatteShare.sharedInstance.username {
@@ -44,11 +44,23 @@ class StatusBarController: NSObject {
         } else {
             loggedInMenuItem.title = "Not logged in..."
         }
-        
+    }
+    
+    func screenshotUploaded() {
+        refresh()
+    }
+    
+    func authenticationStateDidChange(loggedIn _: Bool) {
+        refresh()
     }
     
     func createMenuItemForFile(item: RecentItem) -> NSMenuItem {
-        let menuItem = NSMenuItem(title: item.id, action: nil, keyEquivalent: "")
+        let df = NSDateFormatter()
+        
+        df.dateStyle = .MediumStyle
+        df.timeStyle = .ShortStyle
+        
+        let menuItem = NSMenuItem(title: df.stringFromDate(item.date), action: nil, keyEquivalent: "")
         
         let subMenu = NSMenu()
         
@@ -56,6 +68,7 @@ class StatusBarController: NSObject {
         subMenu.addItem(NSMenuItem.separatorItem())
         subMenu.addItemWithTitle("Delete", action: Selector("deleteClicked:"), keyEquivalent: "")?.target = self
         
+        menuItem.representedObject = item
         menuItem.submenu = subMenu
         
         return menuItem
@@ -63,10 +76,38 @@ class StatusBarController: NSObject {
     
     func copyURLClicked(sender: NSMenuItem) {
         print("Copy URL clicked from \(sender).")
+        
+        NSPasteboard.generalPasteboard().clearContents()
+        NSPasteboard.generalPasteboard().writeObjects([(sender.parentItem!.representedObject as! RecentItem).id])
     }
     
     func deleteClicked(sender: NSMenuItem) {
         print("Delete clicked from \(sender).")
+        
+        let ri = sender.parentItem!.representedObject as! RecentItem
+        
+        let arr = ri.id.characters.split{ $0 == "/" }.map(String.init)
+        
+        try! LatteShare.sharedInstance.getConnection()?.deleteFile(arr.last!, success: {
+            
+            let ris = RecentItems()
+            
+            ris.removeRecentItem(ri)
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                self.refresh()
+            }
+            
+        }, failure: { error in
+            
+            let alert = NSAlert()
+            
+            alert.messageText = "Error!"
+            alert.informativeText = error
+            
+            alert.runModal()
+            
+        })
     }
     
     @IBAction func openSettings(sender: NSMenuItem) {
