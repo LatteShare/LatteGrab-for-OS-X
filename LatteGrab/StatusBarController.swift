@@ -8,12 +8,14 @@
 
 import Cocoa
 
+import LatteShare
+
 class StatusBarController: NSObject {
     
     @IBOutlet weak var menu : NSMenu!
     @IBOutlet weak var recentFilesMenu : NSMenu!
     
-    @IBOutlet weak var recentFilesMenuItem : NSMenuItem?
+    @IBOutlet weak var loggedInMenuItem : NSMenuItem!
     
     var statusItem : NSStatusItem!
     
@@ -23,11 +25,28 @@ class StatusBarController: NSObject {
         statusItem.title = "LG"
         statusItem.menu = menu
         
-        recentFilesMenu.addItem(createMenuItemForFile("foo"))
+        refresh()
     }
     
-    func createMenuItemForFile(url: String) -> NSMenuItem {
-        let menuItem = NSMenuItem(title: url, action: nil, keyEquivalent: "")
+    func refresh() {
+        recentFilesMenu.removeAllItems()
+        
+        let ri = RecentItems()
+        
+        for item in ri.getRecentItems(maxItems: -1) {
+            createMenuItemForFile(item)
+        }
+        
+        if let u = LatteShare.sharedInstance.username {
+            loggedInMenuItem.title = "Connected as \(u)"
+        } else {
+            loggedInMenuItem.title = "Not logged in..."
+        }
+        
+    }
+    
+    func createMenuItemForFile(item: RecentItem) -> NSMenuItem {
+        let menuItem = NSMenuItem(title: item.id, action: nil, keyEquivalent: "")
         
         let subMenu = NSMenu()
         

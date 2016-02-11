@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
@@ -24,9 +24,14 @@
         </customObject>
         <customObject id="eK5-AC-qKR" customClass="StatusBarController" customModule="LatteGrab" customModuleProvider="target">
             <connections>
+                <outlet property="loggedInMenuItem" destination="Dcb-qp-OxV" id="L1F-Nf-EHP"/>
                 <outlet property="menu" destination="0SE-yF-BE1" id="YAi-Td-4gY"/>
-                <outlet property="recentFilesMenu" destination="aAo-Vh-Rdo" id="7Xp-J5-JbV"/>
-                <outlet property="recentFilesMenuItem" destination="Bl2-fo-AC2" id="k9Y-pB-jIU"/>
+                <outlet property="recentFilesMenu" destination="aAo-Vh-Rdo" id="dNC-5m-CPp"/>
+            </connections>
+        </customObject>
+        <customObject id="c3a-LZ-xCv" customClass="SettingsController" customModule="LatteGrab" customModuleProvider="target">
+            <connections>
+                <outlet property="openAtLoginButton" destination="Q6f-aq-vqt" id="yjU-Zq-dbU"/>
             </connections>
         </customObject>
         <menu id="0SE-yF-BE1">
@@ -34,7 +39,7 @@
                 <menuItem title="LatteGrab" id="LLb-Bd-A7D">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem title="Connected as MegaEduX" id="Dcb-qp-OxV">
+                <menuItem title="Logged in status here..." id="Dcb-qp-OxV">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="kcy-Ys-eby"/>
@@ -62,7 +67,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="283" y="305" width="735" height="263"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="veR-gL-li6">
                 <rect key="frame" x="0.0" y="0.0" width="735" height="263"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -145,6 +150,100 @@
                 </subviews>
             </view>
             <point key="canvasLocation" x="1097.5" y="410.5"/>
+        </window>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="" animationBehavior="default" id="0Ka-B5-rcE">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="283" y="305" width="480" height="270"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <view key="contentView" id="1ds-bC-Rbw">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <tabView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h5V-Ai-IxP">
+                        <rect key="frame" x="13" y="10" width="454" height="254"/>
+                        <font key="font" metaFont="system"/>
+                        <tabViewItems>
+                            <tabViewItem label="General" identifier="1" id="eeQ-fy-uv1">
+                                <view key="view" ambiguous="YES" id="A4l-IN-eZh">
+                                    <rect key="frame" x="10" y="33" width="434" height="208"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q6f-aq-vqt">
+                                            <rect key="frame" x="15" y="178" width="404" height="18"/>
+                                            <buttonCell key="cell" type="check" title="Open at Login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="GVT-AF-liq">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                        </button>
+                                    </subviews>
+                                </view>
+                            </tabViewItem>
+                            <tabViewItem label="latteshare server" identifier="2" id="LXb-j8-flf">
+                                <view key="view" id="ndb-uE-eko">
+                                    <rect key="frame" x="10" y="33" width="434" height="208"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tt5-71-JEt">
+                                            <rect key="frame" x="24" y="167" width="70" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Username:" id="Yjh-kD-IeR">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tnY-fA-EAp">
+                                            <rect key="frame" x="24" y="140" width="46" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Group:" id="n4n-71-OvS">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="toW-Ne-1pO">
+                                            <rect key="frame" x="24" y="113" width="45" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Quota:" id="tvL-HX-gAm">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JAD-NW-jW5">
+                                            <rect key="frame" x="24" y="61" width="48" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Server:" id="nqe-nT-S5t">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mVY-on-LAq">
+                                            <rect key="frame" x="24" y="34" width="77" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="API Version:" id="Mzc-b8-mj7">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="A7b-v1-vKO">
+                                            <rect key="frame" x="9" y="91" width="416" height="5"/>
+                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <font key="titleFont" metaFont="system"/>
+                                        </box>
+                                    </subviews>
+                                </view>
+                            </tabViewItem>
+                            <tabViewItem label="About" identifier="" id="CHc-Gg-2lr">
+                                <view key="view" id="E8F-w0-LD6">
+                                    <rect key="frame" x="10" y="33" width="434" height="208"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                            </tabViewItem>
+                        </tabViewItems>
+                    </tabView>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="963" y="839"/>
         </window>
     </objects>
     <resources>
