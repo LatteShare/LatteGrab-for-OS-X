@@ -33,7 +33,6 @@
 		6FBF96A21C6B71980039FF4A /* LatteShare.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6FBF968E1C6B6EEF0039FF4A /* LatteShare.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6FBF96A41C6B73E20039FF4A /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6F6F38E31C699E5E005D89B8 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6FBF96A51C6B73E20039FF4A /* SwiftyJSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6F6F38E51C6A2AAD005D89B8 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6FBF96A71C6BA0410039FF4A /* RecentItemsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBF96A61C6BA0410039FF4A /* RecentItemsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,7 +126,6 @@
 		6FBF968E1C6B6EEF0039FF4A /* LatteShare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LatteShare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FBF96901C6B6EEF0039FF4A /* LatteShare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LatteShare.h; sourceTree = "<group>"; };
 		6FBF96921C6B6EEF0039FF4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6FBF96A61C6BA0410039FF4A /* RecentItemsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentItemsController.swift; sourceTree = "<group>"; };
 		6FBF96A81C6BA0B00039FF4A /* RecentItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecentItem.swift; path = ../LatteGrab/RecentItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -190,7 +188,6 @@
 				6FB58EE31C6AC2A5003DA17A /* AuthenticationController.swift */,
 				6F48E2091C6ABC3C006DA2E6 /* StatusBarController.swift */,
 				6F6F38EC1C6A56A3005D89B8 /* ScreenshotWatcher.swift */,
-				6FBF96A61C6BA0410039FF4A /* RecentItemsController.swift */,
 				6FB58EE61C6C2E24003DA17A /* SettingsController.swift */,
 				6F6F38F11C6A7380005D89B8 /* LatteGrab-Bridging-Header.h */,
 				6F6F38D51C699CE2005D89B8 /* Assets.xcassets */,
@@ -415,7 +412,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FB58EE71C6C2E24003DA17A /* SettingsController.swift in Sources */,
-				6FBF96A71C6BA0410039FF4A /* RecentItemsController.swift in Sources */,
 				6F48E20A1C6ABC3C006DA2E6 /* StatusBarController.swift in Sources */,
 				6F6F38EA1C6A564A005D89B8 /* DirectoryMonitor.swift in Sources */,
 				6F6F38ED1C6A56A3005D89B8 /* ScreenshotWatcher.swift in Sources */,
