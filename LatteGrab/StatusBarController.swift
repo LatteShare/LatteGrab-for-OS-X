@@ -12,6 +12,8 @@ import LatteShare
 
 class StatusBarController: NSObject {
     
+    @IBOutlet weak var settingsWindow : NSWindow!
+    
     @IBOutlet weak var menu : NSMenu!
     @IBOutlet weak var recentFilesMenu : NSMenu!
     
@@ -67,12 +69,14 @@ class StatusBarController: NSObject {
         print("Delete clicked from \(sender).")
     }
     
-    @IBAction func quit(sender: NSMenuItem) {
-        NSApplication.sharedApplication().terminate(self)
+    @IBAction func openSettings(sender: NSMenuItem) {
+        settingsWindow.makeKeyAndOrderFront(self)
+        
+        settingsWindow.level = Int(CGWindowLevelForKey(.FloatingWindowLevelKey))
     }
     
-    @IBAction func openSettings(sender: NSMenuItem) {
-        
+    @IBAction func quit(sender: NSMenuItem) {
+        NSApplication.sharedApplication().terminate(self)
     }
     
 }

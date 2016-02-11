@@ -21,6 +21,8 @@ class AuthenticationController: NSObject {
     override func awakeFromNib() {
         if !LatteShare.sharedInstance.hasAuthenticationDetails() {
             window.makeKeyAndOrderFront(self)
+            
+            window.level = Int(CGWindowLevelForKey(.FloatingWindowLevelKey))
         }
     }
     

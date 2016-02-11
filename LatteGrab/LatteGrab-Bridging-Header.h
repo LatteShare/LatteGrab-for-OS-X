@@ -4,3 +4,5 @@
 
 #include <sys/xattr.h>
 #include <string.h>
+
+#import "PALoginItemUtility.h"

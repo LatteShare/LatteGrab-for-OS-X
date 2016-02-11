@@ -14,13 +14,25 @@ class SettingsController: NSObject {
     
     @IBOutlet var openAtLoginButton : NSButton!
     
-    static let kOpenAtLoginKey = "Open at Login"
-    
     override func awakeFromNib() {
         defaults = NSUserDefaults(suiteName: "io.edr.LatteGrab.group")!
         
-        if defaults.boolForKey(SettingsController.kOpenAtLoginKey) {
-            //  openAtLoginButton
+        if PALoginItemUtility.isCurrentApplicatonInLoginItems() {
+            openAtLoginButton.state = NSOnState
+        } else {
+            openAtLoginButton.state = NSOffState
+        }
+    }
+    
+    @IBAction func toggleOpenAtLogin(sender: NSButton!) {
+        if !PALoginItemUtility.isCurrentApplicatonInLoginItems() {
+            PALoginItemUtility.addCurrentApplicatonToLoginItems()
+            
+            openAtLoginButton.state = NSOnState
+        } else {
+            PALoginItemUtility.removeCurrentApplicatonFromLoginItems()
+            
+            openAtLoginButton.state = NSOffState
         }
     }
     

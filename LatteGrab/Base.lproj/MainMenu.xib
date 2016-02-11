@@ -27,6 +27,7 @@
                 <outlet property="loggedInMenuItem" destination="Dcb-qp-OxV" id="L1F-Nf-EHP"/>
                 <outlet property="menu" destination="0SE-yF-BE1" id="YAi-Td-4gY"/>
                 <outlet property="recentFilesMenu" destination="aAo-Vh-Rdo" id="dNC-5m-CPp"/>
+                <outlet property="settingsWindow" destination="0Ka-B5-rcE" id="L45-MJ-n2S"/>
             </connections>
         </customObject>
         <customObject id="c3a-LZ-xCv" customClass="SettingsController" customModule="LatteGrab" customModuleProvider="target">
@@ -151,8 +152,8 @@
             </view>
             <point key="canvasLocation" x="1097.5" y="410.5"/>
         </window>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="" animationBehavior="default" id="0Ka-B5-rcE">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+        <window title="Settings - LatteGrab" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="0Ka-B5-rcE">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" texturedBackground="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="283" y="305" width="480" height="270"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
@@ -175,6 +176,9 @@
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="toggleOpenAtLogin:" target="c3a-LZ-xCv" id="5M1-07-y7c"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </view>
