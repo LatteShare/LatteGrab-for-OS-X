@@ -21,6 +21,7 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <customObject id="1aF-kW-GEQ" userLabel="Auth Controller" customClass="AuthenticationController" customModule="LatteGrab" customModuleProvider="target">
             <connections>
+                <outlet property="loginButton" destination="K3x-cG-HBw" id="mVO-lz-fEX"/>
                 <outlet property="passwordField" destination="617-Ke-Y0n" id="TRh-dO-rDj"/>
                 <outlet property="serverField" destination="MGw-oG-hdo" id="hkY-mv-hFs"/>
                 <outlet property="usernameField" destination="g4U-8B-DLu" id="2af-Nq-T6a"/>
