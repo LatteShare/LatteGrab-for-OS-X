@@ -18,6 +18,8 @@ class AuthenticationController: NSObject {
     @IBOutlet weak var passwordField : NSTextField!
     @IBOutlet weak var serverField : NSTextField!
     
+    @IBOutlet weak var loginButton : NSButton!
+    
     override func awakeFromNib() {
         if !LatteShare.sharedInstance.hasAuthenticationDetails() {
             window.makeKeyAndOrderFront(self)
@@ -42,6 +44,8 @@ class AuthenticationController: NSObject {
             return
         }
         
+        loginButton.enabled = false
+        
         let endpoint = (serverField.stringValue != "" ? serverField.stringValue : "https://grabpaw.com/api/v1/");
         
         let tempConnection = LatteShareConnection(apiEndpoint: endpoint)
@@ -55,6 +59,8 @@ class AuthenticationController: NSObject {
             LatteShare.sharedInstance.newConnection()
             LatteShare.sharedInstance.save()
             
+            self.loginButton.enabled = true
+            
             self.window.close()
             
         }, failure: { error in
@@ -65,6 +71,8 @@ class AuthenticationController: NSObject {
             alert.informativeText = error
             
             alert.runModal()
+            
+            self.loginButton.enabled = true
             
         })
     }
