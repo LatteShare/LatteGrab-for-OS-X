@@ -54,7 +54,7 @@ class ScreenshotWatcher : DirectoryMonitorDelegate {
                     
                     if attrNames.names != nil {
                         if attrNames.names!.contains("com.apple.metadata:kMDItemIsScreenCapture") || attrNames.names!.contains("com.apple.metadata:kMDItemScreenCaptureGlobalRect") || attrNames.names!.contains("com.apple.metadata:kMDItemScreenCaptureType") {
-                            LatteShare.sharedInstance.getConnection()?.uploadFile(fullElemPath, success: { url in
+                            LatteShare.sharedInstance.getConnection().uploadFile(fullElemPath, success: { url in
                                 
                                 NSPasteboard.generalPasteboard().clearContents()
                                 NSPasteboard.generalPasteboard().writeObjects([url])

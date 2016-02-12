@@ -54,7 +54,7 @@ public class LatteShare {
     }
     
     public func setServer(connectionString cs: String) {
-        
+        connectionString = cs
     }
     
     public func hasAuthenticationDetails() -> Bool {
@@ -69,12 +69,12 @@ public class LatteShare {
         }
     }
     
-    public func getConnection() -> LatteShareConnection? {
+    public func getConnection() -> LatteShareConnection {
         if connection == nil {
             newConnection()
         }
         
-        return connection
+        return connection!
     }
     
     public func save() {

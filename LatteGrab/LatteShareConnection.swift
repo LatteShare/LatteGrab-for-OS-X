@@ -36,6 +36,10 @@ public class LatteShareConnection {
         token = apiToken
     }
     
+    public func hasStoredDetails() -> Bool {
+        return username != nil && token != nil
+    }
+    
     public func getUserInfo(success: LatteShareUserInformation -> (), failure: String -> ()) throws {
         if username == nil || token == nil {
             throw APIError.NotLoggedIn

@@ -24,7 +24,7 @@ class StatusBarController: NSObject, ScreenshotWatcherDelegate, AuthenticationCh
     override func awakeFromNib() {
         statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
         
-        statusItem.title = "LG"
+        statusItem.image = NSImage(named: "MenuBarIcon")
         statusItem.menu = menu
         
         refresh()
@@ -88,7 +88,7 @@ class StatusBarController: NSObject, ScreenshotWatcherDelegate, AuthenticationCh
         
         let arr = ri.id.characters.split{ $0 == "/" }.map(String.init)
         
-        try! LatteShare.sharedInstance.getConnection()?.deleteFile(arr.last!, success: {
+        try! LatteShare.sharedInstance.getConnection().deleteFile(arr.last!, success: {
             
             let ris = RecentItems()
             

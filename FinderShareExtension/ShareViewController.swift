@@ -31,6 +31,10 @@ class ShareViewController: NSViewController, NSTableViewDataSource {
     override func loadView() {
         super.loadView()
         
+        if LatteShare.sharedInstance.getConnection().hasStoredDetails() {
+            
+        }
+        
         let item = self.extensionContext!.inputItems[0] as! NSExtensionItem
         
         if let a = item.attachments {
@@ -100,7 +104,7 @@ class ShareViewController: NSViewController, NSTableViewDataSource {
             
             let outputItems = [outputItem]
             
-            LatteShare.sharedInstance.getConnection()?.uploadFile(filePaths[0], success: { url in
+            LatteShare.sharedInstance.getConnection().uploadFile(filePaths[0], success: { url in
                 NSPasteboard.generalPasteboard().clearContents()
                 NSPasteboard.generalPasteboard().writeObjects([url])
                 
@@ -131,7 +135,7 @@ class ShareViewController: NSViewController, NSTableViewDataSource {
             })
         } else {
             for path in filePaths {
-                LatteShare.sharedInstance.getConnection()?.uploadFile(path, success: { url in
+                LatteShare.sharedInstance.getConnection().uploadFile(path, success: { url in
                     print(url)
                     
                     let arr = url.characters.split{ $0 == "/" }.map(String.init)
@@ -161,7 +165,7 @@ class ShareViewController: NSViewController, NSTableViewDataSource {
         
         let outputItems = [outputItem]
         
-        try! LatteShare.sharedInstance.getConnection()?.createGroup(ids, success: { url in
+        try! LatteShare.sharedInstance.getConnection().createGroup(ids, success: { url in
             NSPasteboard.generalPasteboard().clearContents()
             NSPasteboard.generalPasteboard().writeObjects([url])
             

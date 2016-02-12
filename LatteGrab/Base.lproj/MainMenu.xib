@@ -44,6 +44,7 @@
                 <outlet property="quotaField" destination="CP7-yc-unr" id="Q9T-hi-oCf"/>
                 <outlet property="serverField" destination="4v9-77-kXp" id="eaA-Bi-uWB"/>
                 <outlet property="usernameField" destination="KtJ-9G-wQA" id="Qe5-Ax-FDh"/>
+                <outlet property="window" destination="0Ka-B5-rcE" id="tnW-7Q-GIW"/>
             </connections>
         </customObject>
         <menu id="0SE-yF-BE1">
@@ -177,12 +178,12 @@
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="General" identifier="1" id="eeQ-fy-uv1">
-                                <view key="view" id="A4l-IN-eZh">
-                                    <rect key="frame" x="10" y="33" width="434" height="208"/>
+                                <view key="view" ambiguous="YES" id="A4l-IN-eZh">
+                                    <rect key="frame" x="10" y="33" width="192" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q6f-aq-vqt">
-                                            <rect key="frame" x="15" y="178" width="404" height="18"/>
+                                            <rect key="frame" x="15" y="-30" width="404" height="18"/>
                                             <buttonCell key="cell" type="check" title="Open at Login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="GVT-AF-liq">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -195,7 +196,7 @@
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="latteshare server" identifier="2" id="LXb-j8-flf">
-                                <view key="view" ambiguous="YES" id="ndb-uE-eko">
+                                <view key="view" id="ndb-uE-eko">
                                     <rect key="frame" x="10" y="33" width="434" height="208"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -334,6 +335,9 @@
                     </tabView>
                 </subviews>
             </view>
+            <connections>
+                <outlet property="delegate" destination="c3a-LZ-xCv" id="dIc-Ax-saD"/>
+            </connections>
             <point key="canvasLocation" x="963" y="839"/>
         </window>
     </objects>

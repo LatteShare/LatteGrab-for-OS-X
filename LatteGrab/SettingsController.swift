@@ -38,8 +38,6 @@ class SettingsController: NSObject, NSWindowDelegate {
     }
     
     func windowDidChangeOcclusionState(notification: NSNotification) {
-        //  FIXME: Fix this, not working! 
-        
         updateRemoteInfo(self)
     }
     
@@ -56,7 +54,7 @@ class SettingsController: NSObject, NSWindowDelegate {
     }
     
     func updateRemoteInfo(sender: AnyObject!) {
-        try! LatteShare.sharedInstance.getConnection()?.getUserInfo({ userInfo in
+        try! LatteShare.sharedInstance.getConnection().getUserInfo({ userInfo in
             let usedReadable = NSByteCountFormatter.stringFromByteCount(userInfo.usedDiskSpace, countStyle: .File)
             let quotaReadable = NSByteCountFormatter.stringFromByteCount(userInfo.quota, countStyle: .File)
             
