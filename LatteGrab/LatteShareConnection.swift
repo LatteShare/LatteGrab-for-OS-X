@@ -9,6 +9,13 @@
 import Alamofire
 import SwiftyJSON
 
+public struct LatteShareUserInformation {
+    public let username : String
+    public let group : String
+    public let quota : Int64
+    public let usedDiskSpace : Int64
+}
+
 public class LatteShareConnection {
     
     let endpoint: String
@@ -29,6 +36,31 @@ public class LatteShareConnection {
         token = apiToken
     }
     
+    public func getUserInfo(success: LatteShareUserInformation -> (), failure: String -> ()) throws {
+        if username == nil || token == nil {
+            throw APIError.NotLoggedIn
+        }
+        
+        Alamofire.request(.GET, endpoint + "user", parameters: [ "apiKey": token! ]).responseJSON() { response in
+            if let value = response.result.value {
+                let json = JSON(value)
+                
+                if json["success"].boolValue == true {
+                    success(LatteShareUserInformation(
+                        username: json["data"]["username"].stringValue,
+                        group: json["data"]["group"].stringValue,
+                        quota: json["data"]["quota"].int64Value,
+                        usedDiskSpace: json["data"]["usedDiskSpace"].int64Value)
+                    )
+                } else {
+                    failure(json["error"].stringValue)
+                }
+            } else {
+                failure("Invalid login details.")
+            }
+        }
+    }
+    
     public func validateToken(validated: Bool -> ()) throws {
         if username == nil || token == nil {
             throw APIError.NotLoggedIn
@@ -36,8 +68,6 @@ public class LatteShareConnection {
         
         Alamofire.request(.GET, endpoint + "key", parameters: [ "username": username!, "apiKey": token! ]).responseJSON() { response in
             if let value = response.result.value {
-                print("JSON: \(value)")
-                
                 let json = JSON(value)
                 
                 validated(json["success"].boolValue)
@@ -50,8 +80,6 @@ public class LatteShareConnection {
     public func generateToken(username: String, password: String, success: String -> (), failure: String -> ()) {
         Alamofire.request(.POST, endpoint + "key", parameters: [ "username": username, "password": password ]).responseJSON() { response in
             if let value = response.result.value {
-                print("JSON: \(value)")
-                
                 let json = JSON(value)
                 
                 if json["success"].boolValue == true {
@@ -95,8 +123,6 @@ public class LatteShareConnection {
                         response in
                         
                         if let value = response.result.value {
-                            print("JSON: \(value)")
-                            
                             let json = JSON(value)
                             
                             if json["success"].boolValue == true {
@@ -126,8 +152,6 @@ public class LatteShareConnection {
         
         Alamofire.request(.POST, endpoint + "group", parameters: [ "username": username!, "apiKey": token!, "ids": JSON(fileIdentifiers).rawString()! ]).responseJSON() { response in
             if let value = response.result.value {
-                print("JSON: \(value)")
-                
                 let json = JSON(value);
                 
                 if json["success"].boolValue == true {
@@ -152,8 +176,6 @@ public class LatteShareConnection {
         
         Alamofire.request(.DELETE, endpoint + "file/" + fileIdentifier, parameters: [ "username": username!, "apiKey": token! ]).responseJSON() { response in
             if let value = response.result.value {
-                print("JSON: \(value)")
-                
                 let json = JSON(value)
                 
                 if json["success"].boolValue == true {

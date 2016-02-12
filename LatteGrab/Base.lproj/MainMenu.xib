@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
@@ -38,7 +38,12 @@
         </customObject>
         <customObject id="c3a-LZ-xCv" customClass="SettingsController" customModule="LatteGrab" customModuleProvider="target">
             <connections>
+                <outlet property="apiVersionField" destination="W2Z-LI-Btu" id="P1r-It-Oqj"/>
+                <outlet property="groupField" destination="jjK-06-hBd" id="jVp-cX-ppt"/>
                 <outlet property="openAtLoginButton" destination="Q6f-aq-vqt" id="yjU-Zq-dbU"/>
+                <outlet property="quotaField" destination="CP7-yc-unr" id="Q9T-hi-oCf"/>
+                <outlet property="serverField" destination="4v9-77-kXp" id="eaA-Bi-uWB"/>
+                <outlet property="usernameField" destination="KtJ-9G-wQA" id="Qe5-Ax-FDh"/>
             </connections>
         </customObject>
         <menu id="0SE-yF-BE1">
@@ -74,7 +79,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="283" y="305" width="735" height="263"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="veR-gL-li6">
                 <rect key="frame" x="0.0" y="0.0" width="735" height="263"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -162,7 +167,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" texturedBackground="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="283" y="305" width="480" height="270"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="1ds-bC-Rbw">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -172,12 +177,12 @@
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="General" identifier="1" id="eeQ-fy-uv1">
-                                <view key="view" ambiguous="YES" id="A4l-IN-eZh">
-                                    <rect key="frame" x="10" y="33" width="192" height="0.0"/>
+                                <view key="view" id="A4l-IN-eZh">
+                                    <rect key="frame" x="10" y="33" width="434" height="208"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q6f-aq-vqt">
-                                            <rect key="frame" x="15" y="-30" width="404" height="18"/>
+                                            <rect key="frame" x="15" y="178" width="404" height="18"/>
                                             <buttonCell key="cell" type="check" title="Open at Login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="GVT-AF-liq">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -190,7 +195,7 @@
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="latteshare server" identifier="2" id="LXb-j8-flf">
-                                <view key="view" id="ndb-uE-eko">
+                                <view key="view" ambiguous="YES" id="ndb-uE-eko">
                                     <rect key="frame" x="10" y="33" width="434" height="208"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -240,6 +245,46 @@
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <font key="titleFont" metaFont="system"/>
                                         </box>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KtJ-9G-wQA">
+                                            <rect key="frame" x="105" y="167" width="314" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="&lt;username&gt;" id="Ysn-jD-QLI">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jjK-06-hBd">
+                                            <rect key="frame" x="105" y="140" width="314" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="&lt;group&gt;" id="GPr-n9-Z4w">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CP7-yc-unr">
+                                            <rect key="frame" x="105" y="113" width="314" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="&lt;quota&gt;" id="6xq-Uf-kYj">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W2Z-LI-Btu">
+                                            <rect key="frame" x="105" y="34" width="314" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="&lt;api version&gt;" id="nLE-nB-laU">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4v9-77-kXp">
+                                            <rect key="frame" x="105" y="61" width="314" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="&lt;server url&gt;" id="kPj-ez-51D">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -247,6 +292,42 @@
                                 <view key="view" id="E8F-w0-LD6">
                                     <rect key="frame" x="10" y="33" width="434" height="208"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iLQ-y1-CMk">
+                                            <rect key="frame" x="131" y="164" width="173" height="24"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="LatteGrab for OS X" id="SEu-9x-l1g">
+                                                <font key="font" metaFont="system" size="20"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q1Z-aJ-D2Z">
+                                            <rect key="frame" x="139" y="139" width="156" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="latteshare client for OS X" id="caW-46-ouY">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EOO-ZA-fGV">
+                                            <rect key="frame" x="176" y="18" width="83" height="32"/>
+                                            <buttonCell key="cell" type="push" title="GitHub" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qSU-Um-8CR">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="openGitHub:" target="c3a-LZ-xCv" id="MyB-4S-jhz"/>
+                                            </connections>
+                                        </button>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Od9-6H-7vc">
+                                            <rect key="frame" x="141" y="54" width="153" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Eduardo Almeida (edr.io)" id="rwQ-gV-lRW">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
                                 </view>
                             </tabViewItem>
                         </tabViewItems>

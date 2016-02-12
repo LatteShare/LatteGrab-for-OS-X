@@ -8,11 +8,22 @@
 
 import Cocoa
 
-class SettingsController: NSObject {
+import LatteShare
+
+class SettingsController: NSObject, NSWindowDelegate {
     
     var defaults : NSUserDefaults!
     
-    @IBOutlet var openAtLoginButton : NSButton!
+    @IBOutlet weak var window : NSWindow!
+    
+    @IBOutlet weak var openAtLoginButton : NSButton!
+    
+    @IBOutlet weak var usernameField : NSTextField!
+    @IBOutlet weak var groupField : NSTextField!
+    @IBOutlet weak var quotaField : NSTextField!
+    
+    @IBOutlet weak var serverField : NSTextField!
+    @IBOutlet weak var apiVersionField : NSTextField!
     
     override func awakeFromNib() {
         defaults = NSUserDefaults(suiteName: "io.edr.LatteGrab.group")!
@@ -22,6 +33,14 @@ class SettingsController: NSObject {
         } else {
             openAtLoginButton.state = NSOffState
         }
+        
+        updateRemoteInfo(self)
+    }
+    
+    func windowDidChangeOcclusionState(notification: NSNotification) {
+        //  FIXME: Fix this, not working! 
+        
+        updateRemoteInfo(self)
     }
     
     @IBAction func toggleOpenAtLogin(sender: NSButton!) {
@@ -34,6 +53,26 @@ class SettingsController: NSObject {
             
             openAtLoginButton.state = NSOffState
         }
+    }
+    
+    func updateRemoteInfo(sender: AnyObject!) {
+        try! LatteShare.sharedInstance.getConnection()?.getUserInfo({ userInfo in
+            let usedReadable = NSByteCountFormatter.stringFromByteCount(userInfo.usedDiskSpace, countStyle: .File)
+            let quotaReadable = NSByteCountFormatter.stringFromByteCount(userInfo.quota, countStyle: .File)
+            
+            self.usernameField.stringValue = userInfo.username
+            self.groupField.stringValue = userInfo.group
+            self.quotaField.stringValue = "\(usedReadable) / \(userInfo.quota == -1 ? "Unmetered" : quotaReadable)"
+        }, failure: { error in
+            print(error)
+        })
+        
+        self.serverField.stringValue = LatteShare.sharedInstance.connectionString
+        self.apiVersionField.stringValue = LatteShare.kAPIVersionString
+    }
+    
+    @IBAction func openGitHub(sender: NSButton!) {
+        NSWorkspace.sharedWorkspace().openURL(NSURL(string: "https://github.com/LatteShare/LatteGrab-for-OS-X")!)
     }
     
 }

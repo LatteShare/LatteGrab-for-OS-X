@@ -56,13 +56,13 @@ class AuthenticationController: NSObject {
         
         loginButton.enabled = false
         
-        let endpoint = (serverField.stringValue != "" ? serverField.stringValue : "https://grabpaw.com/api/v1/");
+        let connectionString = (serverField.stringValue != "" ? serverField.stringValue : "https://grabpaw.com");
         
-        let tempConnection = LatteShareConnection(apiEndpoint: endpoint)
+        let tempConnection = LatteShareConnection(apiEndpoint: connectionString)
         
         tempConnection.generateToken(usernameField.stringValue, password: passwordField.stringValue, success: { token in
             
-            LatteShare.sharedInstance.apiEndpoint = endpoint
+            LatteShare.sharedInstance.connectionString = connectionString
             LatteShare.sharedInstance.username = self.usernameField.stringValue
             LatteShare.sharedInstance.token = token
             
