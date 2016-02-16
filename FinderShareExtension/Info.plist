@@ -30,8 +30,8 @@
 	<dict>
 		<key>NSExtensionAttributes</key>
 		<dict>
-			<key>NSExtensionActivationSupportsFileWithMaxCount</key>
-			<integer>0</integer>
+			<key>NSExtensionActivationRule</key>
+			<string>TRUEPREDICATE</string>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.share-services</string>

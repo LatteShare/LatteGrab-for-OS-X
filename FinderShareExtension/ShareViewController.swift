@@ -75,7 +75,7 @@ class ShareViewController: NSViewController, NSTableViewDataSource {
         sendButton.enabled = fileNames.count != 0
         
         if fileNames.count > 1 {
-            itemCountField.stringValue = "Uploading \(attachments.count) items as a group..."
+            itemCountField.stringValue = "Uploading \(fileNames.count) items as a group..."
         } else if fileNames.count == 1 {
             itemCountField.stringValue = "Uploading a single file..."
         } else {
