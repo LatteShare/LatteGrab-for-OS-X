@@ -88,26 +88,30 @@ class StatusBarController: NSObject, ScreenshotWatcherDelegate, AuthenticationCh
         
         let arr = ri.id.characters.split{ $0 == "/" }.map(String.init)
         
-        try! LatteShare.sharedInstance.getConnection().deleteFile(arr.last!, success: {
-            
-            let ris = RecentItems()
-            
-            ris.removeRecentItem(ri)
-            
-            dispatch_async(dispatch_get_main_queue()) {
-                self.refresh()
-            }
-            
-        }, failure: { error in
-            
-            let alert = NSAlert()
-            
-            alert.messageText = "Error!"
-            alert.informativeText = error
-            
-            alert.runModal()
-            
-        })
+        do {
+            try LatteShare.sharedInstance.getConnection().deleteFile(arr.last!, success: {
+                
+                let ris = RecentItems()
+                
+                ris.removeRecentItem(ri)
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.refresh()
+                }
+                
+                }, failure: { error in
+                    
+                    let alert = NSAlert()
+                    
+                    alert.messageText = "Error!"
+                    alert.informativeText = error
+                    
+                    alert.runModal()
+                    
+            })
+        } catch let e {
+            print("Exception while attempting to delete file! \(e)")
+        }
     }
     
     @IBAction func openSettings(sender: NSMenuItem) {

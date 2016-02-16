@@ -165,35 +165,39 @@ class ShareViewController: NSViewController, NSTableViewDataSource {
         
         let outputItems = [outputItem]
         
-        try! LatteShare.sharedInstance.getConnection().createGroup(ids, success: { url in
-            NSPasteboard.generalPasteboard().clearContents()
-            NSPasteboard.generalPasteboard().writeObjects([url])
-            
-            let alert = NSAlert()
-            
-            alert.messageText = "Upload Successful!"
-            alert.informativeText = "The link to your files group is now in your clipboard."
-            
-            alert.runModal()
-            
-            let ri = RecentItems()
-            
-            ri.addRecentItem(identifier: url, date: NSDate())
-            ri.save()
-            
-            self.extensionContext!.completeRequestReturningItems(outputItems, completionHandler: nil)
-        }, failure: { error in
-            print(error)
-            
-            let alert = NSAlert()
-            
-            alert.messageText = "Upload Error!"
-            alert.informativeText = "An error has occurred while uploading the requested files: \(error)"
-            
-            alert.runModal()
-        
-            self.extensionContext!.completeRequestReturningItems(outputItems, completionHandler: nil)
-        })
+        do {
+            try LatteShare.sharedInstance.getConnection().createGroup(ids, success: { url in
+                NSPasteboard.generalPasteboard().clearContents()
+                NSPasteboard.generalPasteboard().writeObjects([url])
+                
+                let alert = NSAlert()
+                
+                alert.messageText = "Upload Successful!"
+                alert.informativeText = "The link to your files group is now in your clipboard."
+                
+                alert.runModal()
+                
+                let ri = RecentItems()
+                
+                ri.addRecentItem(identifier: url, date: NSDate())
+                ri.save()
+                
+                self.extensionContext!.completeRequestReturningItems(outputItems, completionHandler: nil)
+                }, failure: { error in
+                    print(error)
+                    
+                    let alert = NSAlert()
+                    
+                    alert.messageText = "Upload Error!"
+                    alert.informativeText = "An error has occurred while uploading the requested files: \(error)"
+                    
+                    alert.runModal()
+                    
+                    self.extensionContext!.completeRequestReturningItems(outputItems, completionHandler: nil)
+            })
+        } catch let e {
+            print("Exception at createGroup! \(e)")
+        }
     }
 
     @IBAction func cancel(sender: AnyObject?) {

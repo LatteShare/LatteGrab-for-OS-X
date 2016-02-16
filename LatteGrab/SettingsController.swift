@@ -54,19 +54,23 @@ class SettingsController: NSObject, NSWindowDelegate {
     }
     
     func updateRemoteInfo(sender: AnyObject!) {
-        try! LatteShare.sharedInstance.getConnection().getUserInfo({ userInfo in
-            let usedReadable = NSByteCountFormatter.stringFromByteCount(userInfo.usedDiskSpace, countStyle: .File)
-            let quotaReadable = NSByteCountFormatter.stringFromByteCount(userInfo.quota, countStyle: .File)
+        do {
+            try LatteShare.sharedInstance.getConnection().getUserInfo({ userInfo in
+                let usedReadable = NSByteCountFormatter.stringFromByteCount(userInfo.usedDiskSpace, countStyle: .File)
+                let quotaReadable = NSByteCountFormatter.stringFromByteCount(userInfo.quota, countStyle: .File)
+                
+                self.usernameField.stringValue = userInfo.username
+                self.groupField.stringValue = userInfo.group
+                self.quotaField.stringValue = "\(usedReadable) / \(userInfo.quota == -1 ? "Unmetered" : quotaReadable)"
+                }, failure: { error in
+                    print(error)
+            })
             
-            self.usernameField.stringValue = userInfo.username
-            self.groupField.stringValue = userInfo.group
-            self.quotaField.stringValue = "\(usedReadable) / \(userInfo.quota == -1 ? "Unmetered" : quotaReadable)"
-        }, failure: { error in
-            print(error)
-        })
-        
-        self.serverField.stringValue = LatteShare.sharedInstance.connectionString
-        self.apiVersionField.stringValue = LatteShare.kAPIVersionString
+            self.serverField.stringValue = LatteShare.sharedInstance.connectionString
+            self.apiVersionField.stringValue = LatteShare.kAPIVersionString
+        } catch _ {
+            
+        }
     }
     
     @IBAction func openGitHub(sender: NSButton!) {
