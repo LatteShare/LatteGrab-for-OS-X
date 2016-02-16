@@ -26,12 +26,16 @@ public class LatteShare {
     
     public var apiEndpoint : String {
         get {
-            return connectionString + "/api/" + LatteShare.kAPIVersionString + "/"
+            return LatteShare.generateEndpoint(connectionString)
         }
     }
     
     public var username : String?
     public var token : String?
+    
+    public static func generateEndpoint(server: String) -> String {
+        return server + "/api/" + LatteShare.kAPIVersionString + "/"
+    }
     
     var defaults: NSUserDefaults
     
