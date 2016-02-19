@@ -25,6 +25,10 @@ class SettingsController: NSObject, NSWindowDelegate {
     @IBOutlet weak var serverField : NSTextField!
     @IBOutlet weak var apiVersionField : NSTextField!
     
+    @IBOutlet weak var doNothingRadioButton : NSButton!
+    @IBOutlet weak var moveToTrashRadioButton : NSButton!
+    @IBOutlet weak var deleteFromDiskRadioButton : NSButton!
+    
     override func awakeFromNib() {
         defaults = NSUserDefaults(suiteName: "io.edr.LatteGrab.group")!
         
@@ -50,6 +54,16 @@ class SettingsController: NSObject, NSWindowDelegate {
             PALoginItemUtility.removeCurrentApplicatonFromLoginItems()
             
             openAtLoginButton.state = NSOffState
+        }
+    }
+    
+    @IBAction func changedAfterUploadAction(sender: NSButton!) {
+        if sender == doNothingRadioButton {
+            
+        } else if sender == moveToTrashRadioButton {
+            
+        } else {
+            
         }
     }
     
