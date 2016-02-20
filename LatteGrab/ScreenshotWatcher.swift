@@ -79,20 +79,30 @@ class ScreenshotWatcher : DirectoryMonitorDelegate {
                                     
                                     self.delegate?.screenshotUploaded()
                                     
-                                    do {
-                                        try NSFileManager.defaultManager().removeItemAtPath(fullElemPath)
-                                    } catch let e {
-                                        print("Exception while removing item! \(e)")
+                                    let aa = LocalSettings.getSettings()?.afterAction
+                                    
+                                    if aa == .MoveToTrash {
+                                        do {
+                                            try NSFileManager.defaultManager().trashItemAtURL(NSURL(fileURLWithPath: fullElemPath), resultingItemURL: nil)
+                                        } catch let e {
+                                            print("Exception while trashing item! \(e)")
+                                        }
+                                    } else if aa == .DeleteFromDisk {
+                                        do {
+                                            try NSFileManager.defaultManager().removeItemAtPath(fullElemPath)
+                                        } catch let e {
+                                            print("Exception while removing item! \(e)")
+                                        }
                                     }
                                     
-                                    }, failure: { error in
+                                }, failure: { error in
                                         
-                                        let notification = NSUserNotification()
+                                    let notification = NSUserNotification()
                                         
-                                        notification.title = "Upload Error!"
-                                        notification.informativeText = error
+                                    notification.title = "Upload Error!"
+                                    notification.informativeText = error
                                         
-                                        NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+                                    NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
                                 })
                             }
                         }

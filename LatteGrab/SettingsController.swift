@@ -14,6 +14,8 @@ class SettingsController: NSObject, NSWindowDelegate {
     
     var defaults : NSUserDefaults!
     
+    var localSettings : LocalSettings!
+    
     @IBOutlet weak var window : NSWindow!
     
     @IBOutlet weak var openAtLoginButton : NSButton!
@@ -38,6 +40,25 @@ class SettingsController: NSObject, NSWindowDelegate {
             openAtLoginButton.state = NSOffState
         }
         
+        if let ls = LocalSettings.getSettings() {
+            localSettings = ls
+        } else {
+            localSettings = LocalSettings()
+        }
+        
+        doNothingRadioButton.action = "changedAfterUploadAction:"
+        moveToTrashRadioButton.action = "changedAfterUploadAction:"
+        deleteFromDiskRadioButton.action = "changedAfterUploadAction:"
+        
+        switch localSettings.afterAction {
+        case .DoNothing:
+            doNothingRadioButton.state = NSOnState
+        case .MoveToTrash:
+            moveToTrashRadioButton.state = NSOnState
+        case .DeleteFromDisk:
+            deleteFromDiskRadioButton.state = NSOnState
+        }
+        
         updateRemoteInfo(self)
     }
     
@@ -59,12 +80,14 @@ class SettingsController: NSObject, NSWindowDelegate {
     
     @IBAction func changedAfterUploadAction(sender: NSButton!) {
         if sender == doNothingRadioButton {
-            
+            localSettings.afterAction = .DoNothing
         } else if sender == moveToTrashRadioButton {
-            
+            localSettings.afterAction = .MoveToTrash
         } else {
-            
+            localSettings.afterAction = .DeleteFromDisk
         }
+        
+        localSettings.save()
     }
     
     func updateRemoteInfo(sender: AnyObject!) {

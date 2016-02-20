@@ -39,7 +39,10 @@
         <customObject id="c3a-LZ-xCv" customClass="SettingsController" customModule="LatteGrab" customModuleProvider="target">
             <connections>
                 <outlet property="apiVersionField" destination="W2Z-LI-Btu" id="P1r-It-Oqj"/>
+                <outlet property="deleteFromDiskRadioButton" destination="E2T-T9-QCX" id="ckV-dk-g78"/>
+                <outlet property="doNothingRadioButton" destination="K29-UN-hDp" id="yIu-6S-oPe"/>
                 <outlet property="groupField" destination="jjK-06-hBd" id="jVp-cX-ppt"/>
+                <outlet property="moveToTrashRadioButton" destination="xp3-NY-pT6" id="KZE-Fw-492"/>
                 <outlet property="openAtLoginButton" destination="Q6f-aq-vqt" id="yjU-Zq-dbU"/>
                 <outlet property="quotaField" destination="CP7-yc-unr" id="Q9T-hi-oCf"/>
                 <outlet property="serverField" destination="4v9-77-kXp" id="eaA-Bi-uWB"/>
@@ -219,6 +222,9 @@
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="changedAfterUploadAction:" target="c3a-LZ-xCv" id="fmK-Rw-1Bi"/>
+                                            </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E2T-T9-QCX">
                                             <rect key="frame" x="28" y="46" width="123" height="18"/>
