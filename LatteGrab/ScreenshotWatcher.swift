@@ -106,12 +106,10 @@ class ScreenshotWatcher : DirectoryMonitorDelegate {
                                 })
                             }
                         }
-                        
-                        self.fileNamesAtPath = newFilesAtPath
-                        
-                        break
                     }
                 }
+                
+                self.fileNamesAtPath = newFilesAtPath
             } catch let e {
                 print("Exception while observing change! \(e)")
             }
