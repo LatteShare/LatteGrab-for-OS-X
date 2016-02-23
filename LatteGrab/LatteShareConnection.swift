@@ -113,7 +113,15 @@ public class LatteShareConnection {
         Alamofire.upload(.POST, endpoint + "upload", multipartFormData: {
             multipartFormData in
             
-            multipartFormData.appendBodyPart(data: NSData(contentsOfFile: filePath)!, name: "upload", fileName: NSURL(fileURLWithPath: filePath).lastPathComponent!, mimeType: "application/octet-stream")
+            let UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, NSURL(fileURLWithPath: filePath).pathExtension!, nil)?.takeRetainedValue()
+            
+            var mimeType = "application/octet-stream"
+            
+            if let mt = UTTypeCopyPreferredTagWithClass(UTI!, kUTTagClassMIMEType)?.takeRetainedValue() {
+                mimeType = mt as String
+            }
+            
+            multipartFormData.appendBodyPart(data: NSData(contentsOfFile: filePath)!, name: "upload", fileName: NSURL(fileURLWithPath: filePath).lastPathComponent!, mimeType: mimeType)
             
             for (key, value) in parameters {
                 multipartFormData.appendBodyPart(data: value.dataUsingEncoding(NSUTF8StringEncoding)!, name: key)
