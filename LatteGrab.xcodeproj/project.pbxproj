@@ -34,6 +34,9 @@
 		6FBF96A21C6B71980039FF4A /* LatteShare.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6FBF968E1C6B6EEF0039FF4A /* LatteShare.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6FBF96A41C6B73E20039FF4A /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6F6F38E31C699E5E005D89B8 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6FBF96A51C6B73E20039FF4A /* SwiftyJSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6F6F38E51C6A2AAD005D89B8 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6FD87DDA1C7CF487008DD939 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FD87DD91C7CF487008DD939 /* Sparkle.framework */; };
+		6FD87DDB1C7CF4A3008DD939 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6FD87DD91C7CF487008DD939 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6FD87DDD1C7D0ABF008DD939 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 6FD87DDC1C7D0ABF008DD939 /* dsa_pub.pem */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +63,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				6FD87DDB1C7CF4A3008DD939 /* Sparkle.framework in CopyFiles */,
 				6FBF96961C6B6EEF0039FF4A /* LatteShare.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -129,6 +133,8 @@
 		6FBF96901C6B6EEF0039FF4A /* LatteShare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LatteShare.h; sourceTree = "<group>"; };
 		6FBF96921C6B6EEF0039FF4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6FBF96A81C6BA0B00039FF4A /* RecentItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecentItem.swift; path = ../LatteGrab/RecentItem.swift; sourceTree = "<group>"; };
+		6FD87DD91C7CF487008DD939 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
+		6FD87DDC1C7D0ABF008DD939 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FBF96951C6B6EEF0039FF4A /* LatteShare.framework in Frameworks */,
+				6FD87DDA1C7CF487008DD939 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +203,7 @@
 				6F6F38D51C699CE2005D89B8 /* Assets.xcassets */,
 				6F6F38D71C699CE2005D89B8 /* MainMenu.xib */,
 				6F6F38DA1C699CE2005D89B8 /* Info.plist */,
+				6FD87DDE1C7D0AC3008DD939 /* Supporting Files */,
 			);
 			path = LatteGrab;
 			sourceTree = "<group>";
@@ -204,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				6F6F38E31C699E5E005D89B8 /* Alamofire.framework */,
+				6FD87DD91C7CF487008DD939 /* Sparkle.framework */,
 				6F6F38E51C6A2AAD005D89B8 /* SwiftyJSON.framework */,
 			);
 			name = Frameworks;
@@ -250,6 +259,14 @@
 				6FBF96921C6B6EEF0039FF4A /* Info.plist */,
 			);
 			path = LatteShare;
+			sourceTree = "<group>";
+		};
+		6FD87DDE1C7D0AC3008DD939 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6FD87DDC1C7D0ABF008DD939 /* dsa_pub.pem */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,6 +404,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F6F38D61C699CE2005D89B8 /* Assets.xcassets in Resources */,
+				6FD87DDD1C7D0ABF008DD939 /* dsa_pub.pem in Resources */,
 				6F6F38D91C699CE2005D89B8 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

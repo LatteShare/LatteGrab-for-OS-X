@@ -50,6 +50,7 @@
                 <outlet property="window" destination="0Ka-B5-rcE" id="tnW-7Q-GIW"/>
             </connections>
         </customObject>
+        <customObject id="VCz-4k-29b" customClass="SUUpdater"/>
         <menu id="0SE-yF-BE1">
             <items>
                 <menuItem title="LatteGrab" id="LLb-Bd-A7D">
@@ -181,7 +182,7 @@
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="General" identifier="1" id="eeQ-fy-uv1">
-                                <view key="view" ambiguous="YES" id="A4l-IN-eZh">
+                                <view key="view" id="A4l-IN-eZh">
                                     <rect key="frame" x="10" y="33" width="434" height="208"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -331,7 +332,7 @@
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="About" identifier="" id="CHc-Gg-2lr">
-                                <view key="view" id="E8F-w0-LD6">
+                                <view key="view" ambiguous="YES" id="E8F-w0-LD6">
                                     <rect key="frame" x="10" y="33" width="434" height="208"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -351,16 +352,6 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EOO-ZA-fGV">
-                                            <rect key="frame" x="176" y="18" width="83" height="32"/>
-                                            <buttonCell key="cell" type="push" title="GitHub" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qSU-Um-8CR">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="openGitHub:" target="c3a-LZ-xCv" id="MyB-4S-jhz"/>
-                                            </connections>
-                                        </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Od9-6H-7vc">
                                             <rect key="frame" x="141" y="54" width="153" height="17"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Eduardo Almeida (edr.io)" id="rwQ-gV-lRW">
@@ -369,6 +360,26 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EOO-ZA-fGV">
+                                            <rect key="frame" x="93" y="18" width="83" height="32"/>
+                                            <buttonCell key="cell" type="push" title="GitHub" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qSU-Um-8CR">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="openGitHub:" target="c3a-LZ-xCv" id="MyB-4S-jhz"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZRA-yI-xV9">
+                                            <rect key="frame" x="176" y="18" width="165" height="32"/>
+                                            <buttonCell key="cell" type="push" title="Check for Updates..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fnY-ZE-we1">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="checkForUpdates:" target="VCz-4k-29b" id="lVB-2g-hTB"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </view>
                             </tabViewItem>
