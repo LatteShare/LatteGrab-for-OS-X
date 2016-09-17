@@ -1,14 +1,14 @@
-LatteGrab for OS X
+LatteGrab for macOS
 ==================
 
 Work in Progress.
 
-OS X Client app for LatteGrab.
+macOS Client app for LatteGrab.
 
 ----------
 
-> Main Application requires OS X 10.9+
+> Main Application requires macOS 10.9+
 
-> Finder Extension requires OS X 10.10+
+> Finder Extension requires macOS 10.10+
 
 
