@@ -24,8 +24,8 @@ class ShareViewController: NSViewController, NSTableViewDataSource {
     var filePaths : [String] = []
     var fileNames : [String] = []
 
-    override var nibName: String? {
-        return "ShareViewController"
+    override var nibName: NSNib.Name? {
+        return NSNib.Name("ShareViewController")
     }
 
     override func loadView() {
@@ -38,7 +38,7 @@ class ShareViewController: NSViewController, NSTableViewDataSource {
         let item = self.extensionContext!.inputItems[0] as! NSExtensionItem
         
         if let a = item.attachments {
-            attachments = a
+            attachments = a as [AnyObject]
         } else {
             attachments = []
         }
@@ -47,22 +47,22 @@ class ShareViewController: NSViewController, NSTableViewDataSource {
         
         for a in attachments {
             if a.hasItemConformingToTypeIdentifier("public.data") {
-                a.loadItemForTypeIdentifier("public.data", options: nil, completionHandler: {
+                a.loadItem(forTypeIdentifier: "public.data", options: nil, completionHandler: {
                     data, error in
                     
                     if let url = data as? NSURL {
                         var isDir : ObjCBool = false
                         
-                        NSFileManager.defaultManager().fileExistsAtPath(url.path!, isDirectory: &isDir)
+                        FileManager.default.fileExists(atPath: url.path!, isDirectory: &isDir)
                         
-                        if isDir {
+                        if isDir.boolValue {
                             return
                         }
                         
                         self.filePaths.append(url.path!)
                         self.fileNames.append(NSString(string: url.path!).lastPathComponent)
                         
-                        dispatch_async(dispatch_get_main_queue()) {
+                        DispatchQueue.main.async {
                             self.updateUI()
                         }
                     }
@@ -72,7 +72,7 @@ class ShareViewController: NSViewController, NSTableViewDataSource {
     }
     
     func updateUI() {
-        sendButton.enabled = fileNames.count != 0
+        sendButton.isEnabled = fileNames.count != 0
         
         if fileNames.count > 1 {
             itemCountField.stringValue = "Uploading \(fileNames.count) items as a group..."
@@ -89,12 +89,12 @@ class ShareViewController: NSViewController, NSTableViewDataSource {
         return fileNames.count
     }
     
-    func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
+    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         return NSString(string: fileNames[row])
     }
 
     @IBAction func send(sender: AnyObject?) {
-        sendButton.enabled = false
+        sendButton.isEnabled = false
         
         var ids : [String] = []
         var count = 0
@@ -104,9 +104,9 @@ class ShareViewController: NSViewController, NSTableViewDataSource {
             
             let outputItems = [outputItem]
             
-            LatteShare.sharedInstance.getConnection().uploadFile(filePaths[0], success: { url in
-                NSPasteboard.generalPasteboard().clearContents()
-                NSPasteboard.generalPasteboard().writeObjects([url])
+            LatteShare.sharedInstance.getConnection().uploadFile(filePath: filePaths[0], success: { url in
+                NSPasteboard.general.clearContents()
+                NSPasteboard.general.writeObjects([url as NSPasteboardWriting])
                 
                 let alert = NSAlert()
                 
@@ -120,7 +120,7 @@ class ShareViewController: NSViewController, NSTableViewDataSource {
                 ri.addRecentItem(identifier: url, date: NSDate())
                 ri.save()
                 
-                self.extensionContext!.completeRequestReturningItems(outputItems, completionHandler: nil)
+                self.extensionContext!.completeRequest(returningItems: outputItems, completionHandler: nil)
             }, failure: { error in
                 //  Deal with error.
                 
@@ -131,29 +131,29 @@ class ShareViewController: NSViewController, NSTableViewDataSource {
                 
                 alert.runModal()
                 
-                self.extensionContext!.completeRequestReturningItems(outputItems, completionHandler: nil)
+                self.extensionContext!.completeRequest(returningItems: outputItems, completionHandler: nil)
             })
         } else {
             for path in filePaths {
-                LatteShare.sharedInstance.getConnection().uploadFile(path, success: { url in
+                LatteShare.sharedInstance.getConnection().uploadFile(filePath: path, success: { url in
                     print(url)
                     
-                    let arr = url.characters.split{ $0 == "/" }.map(String.init)
+                    let arr = url.split{ $0 == "/" }.map(String.init)
                     
                     ids.append(arr.last!)
                     
-                    count++
+                    count += 1
                     
                     if count == self.filePaths.count {
-                        self.createGroup(ids)
+                        self.createGroup(ids: ids)
                     }
                 }, failure: { error in
                     print(error)
                         
-                    count++
+                    count += 1
                         
                     if count == self.filePaths.count {
-                        self.createGroup(ids)
+                        self.createGroup(ids: ids)
                     }
                 })
             }
@@ -166,9 +166,9 @@ class ShareViewController: NSViewController, NSTableViewDataSource {
         let outputItems = [outputItem]
         
         do {
-            try LatteShare.sharedInstance.getConnection().createGroup(ids, success: { url in
-                NSPasteboard.generalPasteboard().clearContents()
-                NSPasteboard.generalPasteboard().writeObjects([url])
+            try LatteShare.sharedInstance.getConnection().createGroup(fileIdentifiers: ids, success: { url in
+                NSPasteboard.general.clearContents()
+                NSPasteboard.general.writeObjects([url as NSPasteboardWriting])
                 
                 let alert = NSAlert()
                 
@@ -182,7 +182,7 @@ class ShareViewController: NSViewController, NSTableViewDataSource {
                 ri.addRecentItem(identifier: url, date: NSDate())
                 ri.save()
                 
-                self.extensionContext!.completeRequestReturningItems(outputItems, completionHandler: nil)
+                self.extensionContext!.completeRequest(returningItems: outputItems, completionHandler: nil)
                 }, failure: { error in
                     print(error)
                     
@@ -193,7 +193,7 @@ class ShareViewController: NSViewController, NSTableViewDataSource {
                     
                     alert.runModal()
                     
-                    self.extensionContext!.completeRequestReturningItems(outputItems, completionHandler: nil)
+                    self.extensionContext!.completeRequest(returningItems: outputItems, completionHandler: nil)
             })
         } catch let e {
             print("Exception at createGroup! \(e)")
@@ -202,7 +202,7 @@ class ShareViewController: NSViewController, NSTableViewDataSource {
 
     @IBAction func cancel(sender: AnyObject?) {
         let cancelError = NSError(domain: NSCocoaErrorDomain, code: NSUserCancelledError, userInfo: nil)
-        self.extensionContext!.cancelRequestWithError(cancelError)
+        self.extensionContext!.cancelRequest(withError: cancelError)
     }
 
 }

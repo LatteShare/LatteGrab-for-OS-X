@@ -11,7 +11,7 @@ import Cocoa
 import LatteShare
 
 protocol AuthenticationChangeDelegate {
-    func authenticationStateDidChange(loggedIn loggedIn: Bool)
+    func authenticationStateDidChange(loggedIn: Bool)
 }
 
 class AuthenticationController: NSObject {
@@ -30,7 +30,7 @@ class AuthenticationController: NSObject {
         if !LatteShare.sharedInstance.hasAuthenticationDetails() {
             window.makeKeyAndOrderFront(self)
             
-            window.level = Int(CGWindowLevelForKey(.FloatingWindowLevelKey))
+            window.level = .floating
             
             delegate?.authenticationStateDidChange(loggedIn: false)
         } else {
@@ -39,7 +39,7 @@ class AuthenticationController: NSObject {
     }
     
     @IBAction func signUp(sender: NSButton) {
-        NSWorkspace.sharedWorkspace().openURL(NSURL(string: "https://grabpaw.com/signup")!)
+        NSWorkspace.shared.open(URL(string: "https://grabpaw.com/signup")!)
     }
     
     @IBAction func logIn(sender: NSButton) {
@@ -54,17 +54,17 @@ class AuthenticationController: NSObject {
             return
         }
         
-        loginButton.enabled = false
+        loginButton.isEnabled = false
         
         var connectionString = (serverField.stringValue != "" ? serverField.stringValue : "https://grabpaw.com");
         
-        while connectionString.characters.count > 0 && connectionString.characters.last! == "/" {
-            connectionString = String(connectionString.characters.dropLast())
+        while connectionString.count > 0 && connectionString.last! == "/" {
+            connectionString = String(connectionString.dropLast())
         }
         
-        let tempConnection = LatteShareConnection(apiEndpoint: LatteShare.generateEndpoint(connectionString))
+        let tempConnection = LatteShareConnection(apiEndpoint: LatteShare.generateEndpoint(server: connectionString))
         
-        tempConnection.generateToken(usernameField.stringValue, password: passwordField.stringValue, success: { token in
+        tempConnection.generateToken(username: usernameField.stringValue, password: passwordField.stringValue, success: { token in
             
             LatteShare.sharedInstance.connectionString = connectionString
             LatteShare.sharedInstance.username = self.usernameField.stringValue
@@ -73,7 +73,7 @@ class AuthenticationController: NSObject {
             LatteShare.sharedInstance.newConnection()
             LatteShare.sharedInstance.save()
             
-            self.loginButton.enabled = true
+            self.loginButton.isEnabled = true
             
             self.delegate?.authenticationStateDidChange(loggedIn: true)
             
@@ -88,7 +88,7 @@ class AuthenticationController: NSObject {
             
             alert.runModal()
             
-            self.loginButton.enabled = true
+            self.loginButton.isEnabled = true
             
             self.delegate?.authenticationStateDidChange(loggedIn: false)
             

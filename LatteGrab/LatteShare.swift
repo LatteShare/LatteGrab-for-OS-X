@@ -26,7 +26,7 @@ public class LatteShare {
     
     public var apiEndpoint : String {
         get {
-            return LatteShare.generateEndpoint(connectionString)
+            return LatteShare.generateEndpoint(server: connectionString)
         }
     }
     
@@ -37,22 +37,22 @@ public class LatteShare {
         return server + "/api/" + LatteShare.kAPIVersionString + "/"
     }
     
-    var defaults: NSUserDefaults
+    var defaults: UserDefaults
     
     private init() {
-        defaults = NSUserDefaults(suiteName: "io.edr.LatteGrab.group")!
+        defaults = UserDefaults(suiteName: "io.edr.LatteGrab.group")!
         
-        if let e = defaults.objectForKey(LatteShare.kServerConnectionStringKey) as? String {
+        if let e = defaults.object(forKey: LatteShare.kServerConnectionStringKey) as? String {
             connectionString = e
         } else {
             connectionString = LatteShare.kDefaultServer
         }
         
-        if let u = defaults.objectForKey(LatteShare.kUsernameKey) as? String {
+        if let u = defaults.object(forKey: LatteShare.kUsernameKey) as? String {
             username = u
         }
         
-        if let t = defaults.objectForKey(LatteShare.kTokenKey) as? String {
+        if let t = defaults.object(forKey: LatteShare.kTokenKey) as? String {
             token = t
         }
     }
@@ -82,9 +82,9 @@ public class LatteShare {
     }
     
     public func save() {
-        defaults.setObject(connectionString, forKey: LatteShare.kServerConnectionStringKey)
-        defaults.setObject(username, forKey: LatteShare.kUsernameKey)
-        defaults.setObject(token, forKey: LatteShare.kTokenKey)
+        defaults.set(connectionString, forKey: LatteShare.kServerConnectionStringKey)
+        defaults.set(username, forKey: LatteShare.kUsernameKey)
+        defaults.set(token, forKey: LatteShare.kTokenKey)
         
         defaults.synchronize()
     }

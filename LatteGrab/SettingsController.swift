@@ -12,7 +12,7 @@ import LatteShare
 
 class SettingsController: NSObject, NSWindowDelegate {
     
-    var defaults : NSUserDefaults!
+    var defaults : UserDefaults!
     
     var localSettings : LocalSettings!
     
@@ -32,12 +32,12 @@ class SettingsController: NSObject, NSWindowDelegate {
     @IBOutlet weak var deleteFromDiskRadioButton : NSButton!
     
     override func awakeFromNib() {
-        defaults = NSUserDefaults(suiteName: "io.edr.LatteGrab.group")!
+        defaults = UserDefaults(suiteName: "io.edr.LatteGrab.group")!
         
         if PALoginItemUtility.isCurrentApplicatonInLoginItems() {
-            openAtLoginButton.state = NSOnState
+            openAtLoginButton.state = .on
         } else {
-            openAtLoginButton.state = NSOffState
+            openAtLoginButton.state = .off
         }
         
         if let ls = LocalSettings.getSettings() {
@@ -46,35 +46,35 @@ class SettingsController: NSObject, NSWindowDelegate {
             localSettings = LocalSettings()
         }
         
-        doNothingRadioButton.action = "changedAfterUploadAction:"
-        moveToTrashRadioButton.action = "changedAfterUploadAction:"
-        deleteFromDiskRadioButton.action = "changedAfterUploadAction:"
+        doNothingRadioButton.action = #selector(changedAfterUploadAction(sender:))
+        moveToTrashRadioButton.action = #selector(changedAfterUploadAction(sender:))
+        deleteFromDiskRadioButton.action = #selector(changedAfterUploadAction(sender:))
         
         switch localSettings.afterAction {
         case .DoNothing:
-            doNothingRadioButton.state = NSOnState
+            doNothingRadioButton.state = .on
         case .MoveToTrash:
-            moveToTrashRadioButton.state = NSOnState
+            moveToTrashRadioButton.state = .on
         case .DeleteFromDisk:
-            deleteFromDiskRadioButton.state = NSOnState
+            deleteFromDiskRadioButton.state = .on
         }
         
-        updateRemoteInfo(self)
+        updateRemoteInfo(sender: self)
     }
     
-    func windowDidChangeOcclusionState(notification: NSNotification) {
-        updateRemoteInfo(self)
+    func windowDidChangeOcclusionState(_ notification: Notification) {
+        updateRemoteInfo(sender: self)
     }
     
     @IBAction func toggleOpenAtLogin(sender: NSButton!) {
         if !PALoginItemUtility.isCurrentApplicatonInLoginItems() {
             PALoginItemUtility.addCurrentApplicatonToLoginItems()
             
-            openAtLoginButton.state = NSOnState
+            openAtLoginButton.state = .on
         } else {
             PALoginItemUtility.removeCurrentApplicatonFromLoginItems()
             
-            openAtLoginButton.state = NSOffState
+            openAtLoginButton.state = .off
         }
     }
     
@@ -92,9 +92,9 @@ class SettingsController: NSObject, NSWindowDelegate {
     
     func updateRemoteInfo(sender: AnyObject!) {
         do {
-            try LatteShare.sharedInstance.getConnection().getUserInfo({ userInfo in
-                let usedReadable = NSByteCountFormatter.stringFromByteCount(userInfo.usedDiskSpace, countStyle: .File)
-                let quotaReadable = NSByteCountFormatter.stringFromByteCount(userInfo.quota, countStyle: .File)
+            try LatteShare.sharedInstance.getConnection().getUserInfo(success: { userInfo in
+                let usedReadable = ByteCountFormatter.string(fromByteCount: userInfo.usedDiskSpace, countStyle: .file)
+                let quotaReadable = ByteCountFormatter.string(fromByteCount: userInfo.quota, countStyle: .file)
                 
                 self.usernameField.stringValue = userInfo.username
                 self.groupField.stringValue = userInfo.group
@@ -111,7 +111,7 @@ class SettingsController: NSObject, NSWindowDelegate {
     }
     
     @IBAction func openGitHub(sender: NSButton!) {
-        NSWorkspace.sharedWorkspace().openURL(NSURL(string: "https://github.com/LatteShare/LatteGrab-for-OS-X")!)
+        NSWorkspace.shared.open(URL(string: "https://github.com/LatteShare/LatteGrab-for-OS-X")!)
     }
     
 }

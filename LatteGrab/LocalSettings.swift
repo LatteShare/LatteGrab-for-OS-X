@@ -9,10 +9,10 @@
 import Cocoa
 
 class LocalSettings : NSObject, NSCoding {
-    
+
     static let kLocalSettingsKey = "Local Settings"
     
-    static var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+    static var defaults: UserDefaults = UserDefaults.standard
     
     var afterAction : AfterScreenshotUploadAction
     
@@ -23,8 +23,8 @@ class LocalSettings : NSObject, NSCoding {
     }
     
     static func getSettings() -> LocalSettings? {
-        if let lsData = defaults.objectForKey(kLocalSettingsKey) as? NSData {
-            if let ls = NSKeyedUnarchiver.unarchiveObjectWithData(lsData) as? LocalSettings {
+        if let lsData = defaults.object(forKey: kLocalSettingsKey) as? Data {
+            if let ls = NSKeyedUnarchiver.unarchiveObject(with: lsData) as? LocalSettings {
                 return ls
             }
         }
@@ -37,14 +37,15 @@ class LocalSettings : NSObject, NSCoding {
     }
     
     required init(coder aDecoder: NSCoder) {
-        afterAction = AfterScreenshotUploadAction(rawValue: aDecoder.decodeIntegerForKey("afterAction"))!
+        afterAction = AfterScreenshotUploadAction(rawValue: aDecoder.decodeInteger(forKey: "afterAction"))!
     }
     
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeInteger(afterAction.rawValue, forKey: "afterAction")
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(afterAction.rawValue, forKey: "afterAction")
     }
     
     func save() {
-        LocalSettings.defaults.setObject(NSKeyedArchiver.archivedDataWithRootObject(self), forKey: LocalSettings.kLocalSettingsKey)
+        LocalSettings.defaults.set(NSKeyedArchiver.archivedData(withRootObject: self), forKey: LocalSettings.kLocalSettingsKey)
     }
+    
 }

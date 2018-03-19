@@ -22,9 +22,9 @@ class StatusBarController: NSObject, ScreenshotWatcherDelegate, AuthenticationCh
     var statusItem : NSStatusItem!
     
     override func awakeFromNib() {
-        statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
+        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         
-        statusItem.image = NSImage(named: "MenuBarIcon")
+        statusItem.image = NSImage(named: NSImage.Name("MenuBarIcon"))
         statusItem.menu = menu
         
         refresh()
@@ -36,7 +36,7 @@ class StatusBarController: NSObject, ScreenshotWatcherDelegate, AuthenticationCh
         let ri = RecentItems()
         
         for item in ri.getRecentItems(maxItems: 5) {
-            recentFilesMenu.addItem(createMenuItemForFile(item))
+            recentFilesMenu.addItem(createMenuItemForFile(item: item))
         }
         
         if let u = LatteShare.sharedInstance.username {
@@ -55,18 +55,18 @@ class StatusBarController: NSObject, ScreenshotWatcherDelegate, AuthenticationCh
     }
     
     func createMenuItemForFile(item: RecentItem) -> NSMenuItem {
-        let df = NSDateFormatter()
+        let df = DateFormatter()
         
-        df.dateStyle = .MediumStyle
-        df.timeStyle = .ShortStyle
+        df.dateStyle = .medium
+        df.timeStyle = .short
         
-        let menuItem = NSMenuItem(title: df.stringFromDate(item.date), action: nil, keyEquivalent: "")
+        let menuItem = NSMenuItem(title: df.string(from: item.date as Date), action: nil, keyEquivalent: "")
         
         let subMenu = NSMenu()
         
-        subMenu.addItemWithTitle("Copy URL", action: Selector("copyURLClicked:"), keyEquivalent: "")?.target = self
-        subMenu.addItem(NSMenuItem.separatorItem())
-        subMenu.addItemWithTitle("Delete", action: Selector("deleteClicked:"), keyEquivalent: "")?.target = self
+        subMenu.addItem(withTitle: "Copy URL", action: #selector(copyURLClicked(sender:)), keyEquivalent: "").target = self
+        subMenu.addItem(NSMenuItem.separator())
+        subMenu.addItem(withTitle: "Delete", action: #selector(deleteClicked(sender:)), keyEquivalent: "").target = self
         
         menuItem.representedObject = item
         menuItem.submenu = subMenu
@@ -74,40 +74,40 @@ class StatusBarController: NSObject, ScreenshotWatcherDelegate, AuthenticationCh
         return menuItem
     }
     
-    func copyURLClicked(sender: NSMenuItem) {
+    @objc func copyURLClicked(sender: NSMenuItem) {
         print("Copy URL clicked from \(sender).")
         
-        NSPasteboard.generalPasteboard().clearContents()
-        NSPasteboard.generalPasteboard().writeObjects([(sender.parentItem!.representedObject as! RecentItem).id])
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.writeObjects([(sender.parent!.representedObject as! RecentItem).id as NSPasteboardWriting])
     }
     
-    func deleteClicked(sender: NSMenuItem) {
+    @objc func deleteClicked(sender: NSMenuItem) {
         print("Delete clicked from \(sender).")
         
-        let ri = sender.parentItem!.representedObject as! RecentItem
+        let ri = sender.parent!.representedObject as! RecentItem
         
-        let arr = ri.id.characters.split{ $0 == "/" }.map(String.init)
+        let arr = ri.id.split{ $0 == "/" }.map(String.init)
         
         do {
-            try LatteShare.sharedInstance.getConnection().deleteFile(arr.last!, success: {
+            try LatteShare.sharedInstance.getConnection().deleteFile(fileIdentifier: arr.last!, success: {
                 
                 let ris = RecentItems()
                 
-                ris.removeRecentItem(ri)
+                let _ = ris.removeRecentItem(item: ri)
                 
-                dispatch_async(dispatch_get_main_queue()) {
+                DispatchQueue.main.async {
                     self.refresh()
                 }
+                    
+            }, failure: { error in
                 
-                }, failure: { error in
-                    
-                    let alert = NSAlert()
-                    
-                    alert.messageText = "Error!"
-                    alert.informativeText = error
-                    
-                    alert.runModal()
-                    
+                let alert = NSAlert()
+                
+                alert.messageText = "Error!"
+                alert.informativeText = error
+                
+                alert.runModal()
+                
             })
         } catch let e {
             print("Exception while attempting to delete file! \(e)")
@@ -117,11 +117,11 @@ class StatusBarController: NSObject, ScreenshotWatcherDelegate, AuthenticationCh
     @IBAction func openSettings(sender: NSMenuItem) {
         settingsWindow.makeKeyAndOrderFront(self)
         
-        settingsWindow.level = Int(CGWindowLevelForKey(.FloatingWindowLevelKey))
+        settingsWindow.level = .floating
     }
     
     @IBAction func quit(sender: NSMenuItem) {
-        NSApplication.sharedApplication().terminate(self)
+        NSApplication.shared.terminate(self)
     }
     
 }
