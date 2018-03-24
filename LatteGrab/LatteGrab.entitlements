@@ -4,7 +4,7 @@
 <dict>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>io.edr.LatteGrab.group</string>
+		<string>group.io.edr.lattegrab</string>
 	</array>
 </dict>
 </plist>
