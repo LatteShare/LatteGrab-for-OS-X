@@ -37,6 +37,8 @@
 		6FD87DDA1C7CF487008DD939 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FD87DD91C7CF487008DD939 /* Sparkle.framework */; };
 		6FD87DDB1C7CF4A3008DD939 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6FD87DD91C7CF487008DD939 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6FD87DDD1C7D0ABF008DD939 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 6FD87DDC1C7D0ABF008DD939 /* dsa_pub.pem */; };
+		A0CDA6CF206ECC220003A8A7 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CDA6CE206ECC220003A8A7 /* Utilities.swift */; };
+		A0CDA6D0206ECC7F0003A8A7 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CDA6CE206ECC220003A8A7 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +137,7 @@
 		6FBF96A81C6BA0B00039FF4A /* RecentItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecentItem.swift; path = ../LatteGrab/RecentItem.swift; sourceTree = "<group>"; };
 		6FD87DD91C7CF487008DD939 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
 		6FD87DDC1C7D0ABF008DD939 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
+		A0CDA6CE206ECC220003A8A7 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +175,7 @@
 			children = (
 				6F6F38D21C699CE2005D89B8 /* LatteGrab */,
 				6FBF96761C6B6D550039FF4A /* FinderShareExtension */,
+				A0CDA6CD206ECC120003A8A7 /* Shared */,
 				6FBF968F1C6B6EEF0039FF4A /* LatteShare */,
 				6F6F38E21C699E50005D89B8 /* Frameworks */,
 				6F6F38D11C699CE2005D89B8 /* Products */,
@@ -267,6 +271,14 @@
 				6FD87DDC1C7D0ABF008DD939 /* dsa_pub.pem */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A0CDA6CD206ECC120003A8A7 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				A0CDA6CE206ECC220003A8A7 /* Utilities.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -441,6 +453,7 @@
 				6F6F38D41C699CE2005D89B8 /* AppDelegate.swift in Sources */,
 				6F5690B71C6C92E900CBAEFA /* PALoginItemUtility.m in Sources */,
 				6F6F38F61C6A7399005D89B8 /* ExtendedAttributes.swift in Sources */,
+				A0CDA6CF206ECC220003A8A7 /* Utilities.swift in Sources */,
 				6F7CDDC61C77CC7100E3FA0B /* LocalSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,6 +462,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0CDA6D0206ECC7F0003A8A7 /* Utilities.swift in Sources */,
 				6FBF967C1C6B6D550039FF4A /* ShareViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

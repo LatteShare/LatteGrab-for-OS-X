@@ -94,6 +94,7 @@ class ScreenshotWatcher {
                                         notification.informativeText = error
                                         
                                         NSUserNotificationCenter.default.deliver(notification)
+                                        
                                     })
                                 }
                             }

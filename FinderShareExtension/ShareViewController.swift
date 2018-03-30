@@ -32,7 +32,9 @@ class ShareViewController: NSViewController, NSTableViewDataSource {
         super.loadView()
         
         if LatteShare.sharedInstance.getConnection().hasStoredDetails() {
+            showWarningDialog(question: "Not logged in!", text: "Please login to your account before attempting a file upload with LatteShare.")
             
+            return self.cancel(sender: nil)
         }
         
         let item = self.extensionContext!.inputItems[0] as! NSExtensionItem
