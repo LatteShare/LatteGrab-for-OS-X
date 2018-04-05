@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -194,11 +194,11 @@
                         <tabViewItems>
                             <tabViewItem label="General" identifier="1" id="eeQ-fy-uv1">
                                 <view key="view" ambiguous="YES" id="A4l-IN-eZh">
-                                    <rect key="frame" x="10" y="33" width="434" height="208"/>
+                                    <rect key="frame" x="10" y="33" width="192" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q6f-aq-vqt">
-                                            <rect key="frame" x="15" y="173" width="404" height="18"/>
+                                            <rect key="frame" x="15" y="-35" width="404" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Open at Login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="GVT-AF-liq">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -209,11 +209,11 @@
                                             </connections>
                                         </button>
                                         <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="MAo-If-kxv">
-                                            <rect key="frame" x="9" y="151" width="416" height="5"/>
+                                            <rect key="frame" x="9" y="-57" width="416" height="5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </box>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wsR-If-t4J">
-                                            <rect key="frame" x="15" y="121" width="297" height="17"/>
+                                            <rect key="frame" x="15" y="-87" width="297" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Action to perform on auto-uploaded screenshot:" id="caa-dc-5LS">
                                                 <font key="font" metaFont="system"/>
@@ -222,7 +222,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K29-UN-hDp">
-                                            <rect key="frame" x="28" y="90" width="91" height="18"/>
+                                            <rect key="frame" x="28" y="-118" width="91" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="radio" title="Do Nothing" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="wLl-YJ-v1P">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -233,7 +233,7 @@
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xp3-NY-pT6">
-                                            <rect key="frame" x="28" y="68" width="108" height="18"/>
+                                            <rect key="frame" x="28" y="-140" width="108" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="radio" title="Move to Trash" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="XaH-lv-K0P">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -244,7 +244,7 @@
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E2T-T9-QCX">
-                                            <rect key="frame" x="28" y="46" width="123" height="18"/>
+                                            <rect key="frame" x="28" y="-162" width="123" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="radio" title="Delete from Disk" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="chS-tu-ASf">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>

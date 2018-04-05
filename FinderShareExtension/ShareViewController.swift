@@ -27,14 +27,18 @@ class ShareViewController: NSViewController, NSTableViewDataSource {
     override var nibName: NSNib.Name? {
         return NSNib.Name("ShareViewController")
     }
-
-    override func loadView() {
-        super.loadView()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        if LatteShare.sharedInstance.getConnection().hasStoredDetails() {
-            showWarningDialog(question: "Not logged in!", text: "Please login to your account before attempting a file upload with LatteShare.")
+        if !LatteShare.sharedInstance.getConnection().hasStoredDetails() {
+            //  If we don't wait a little bit it just crashes, which does not make up for a great UX.
             
-            return self.cancel(sender: nil)
+            return DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                let _ = showWarningDialog(question: "Not logged in!", text: "Please login to your account before attempting a file upload with LatteShare.")
+                
+                self.cancel(sender: nil)
+            }
         }
         
         let item = self.extensionContext!.inputItems[0] as! NSExtensionItem
@@ -87,7 +91,7 @@ class ShareViewController: NSViewController, NSTableViewDataSource {
         self.tableView.reloadData()
     }
     
-    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+    func numberOfRows(in tableView: NSTableView) -> Int {
         return fileNames.count
     }
     

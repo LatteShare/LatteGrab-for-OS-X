@@ -30,13 +30,13 @@
 		6FBF969B1C6B6F9C0039FF4A /* LatteShareConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F38E01C699D0B005D89B8 /* LatteShareConnection.swift */; };
 		6FBF969C1C6B70140039FF4A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F6F38E31C699E5E005D89B8 /* Alamofire.framework */; };
 		6FBF969D1C6B70140039FF4A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F6F38E51C6A2AAD005D89B8 /* SwiftyJSON.framework */; };
-		6FBF96A01C6B71870039FF4A /* LatteShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FBF968E1C6B6EEF0039FF4A /* LatteShare.framework */; };
-		6FBF96A21C6B71980039FF4A /* LatteShare.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6FBF968E1C6B6EEF0039FF4A /* LatteShare.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6FBF96A41C6B73E20039FF4A /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6F6F38E31C699E5E005D89B8 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6FBF96A51C6B73E20039FF4A /* SwiftyJSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6F6F38E51C6A2AAD005D89B8 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6FD87DDA1C7CF487008DD939 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FD87DD91C7CF487008DD939 /* Sparkle.framework */; };
 		6FD87DDB1C7CF4A3008DD939 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6FD87DD91C7CF487008DD939 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6FD87DDD1C7D0ABF008DD939 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 6FD87DDC1C7D0ABF008DD939 /* dsa_pub.pem */; };
+		A03B75DA20769A1B002EFE9A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F6F38E31C699E5E005D89B8 /* Alamofire.framework */; };
+		A03B75DB20769A4F002EFE9A /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6F6F38E31C699E5E005D89B8 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A0CDA6CF206ECC220003A8A7 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CDA6CE206ECC220003A8A7 /* Utilities.swift */; };
 		A0CDA6D0206ECC7F0003A8A7 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CDA6CE206ECC220003A8A7 /* Utilities.swift */; };
 /* End PBXBuildFile section */
@@ -87,7 +87,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6FBF96A21C6B71980039FF4A /* LatteShare.framework in CopyFiles */,
+				A03B75DB20769A4F002EFE9A /* Alamofire.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,7 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6FBF96A01C6B71870039FF4A /* LatteShare.framework in Frameworks */,
+				A03B75DA20769A1B002EFE9A /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,12 +360,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Eduardo Almeida";
 				TargetAttributes = {
 					6F6F38CF1C699CE2005D89B8 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 29U224D2XX;
+						DevelopmentTeam = 3D7R27DBRZ;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
@@ -375,7 +375,8 @@
 					};
 					6FBF96741C6B6D550039FF4A = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 29U224D2XX;
+						DevelopmentTeam = 3D7R27DBRZ;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
 								enabled = 1;
@@ -387,7 +388,8 @@
 					};
 					6FBF968D1C6B6EEF0039FF4A = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 29U224D2XX;
+						DevelopmentTeam = 3D7R27DBRZ;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -524,12 +526,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -576,12 +580,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -619,7 +625,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 29U224D2XX;
+				DEVELOPMENT_TEAM = 3D7R27DBRZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
@@ -627,7 +633,7 @@
 				INFOPLIST_FILE = LatteGrab/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = io.edr.LatteGrab;
+				PRODUCT_BUNDLE_IDENTIFIER = io.edr.lattegrab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "LatteGrab/LatteGrab-Bridging-Header.h";
@@ -646,7 +652,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 29U224D2XX;
+				DEVELOPMENT_TEAM = 3D7R27DBRZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
@@ -654,7 +660,7 @@
 				INFOPLIST_FILE = LatteGrab/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = io.edr.LatteGrab;
+				PRODUCT_BUNDLE_IDENTIFIER = io.edr.lattegrab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "LatteGrab/LatteGrab-Bridging-Header.h";
@@ -667,12 +673,19 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = FinderShareExtension/FinderShareExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3D7R27DBRZ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = FinderShareExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = io.edr.LatteGrab.FinderShareExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = io.edr.lattegrab.extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 			};
@@ -683,12 +696,19 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = FinderShareExtension/FinderShareExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3D7R27DBRZ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = FinderShareExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = io.edr.LatteGrab.FinderShareExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = io.edr.lattegrab.extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 			};
@@ -699,9 +719,11 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 3D7R27DBRZ;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -714,8 +736,9 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = io.edr.LatteShare;
+				PRODUCT_BUNDLE_IDENTIFIER = io.edr.latteshare.framework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -728,9 +751,11 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 3D7R27DBRZ;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -743,8 +768,9 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = io.edr.LatteShare;
+				PRODUCT_BUNDLE_IDENTIFIER = io.edr.latteshare.framework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";

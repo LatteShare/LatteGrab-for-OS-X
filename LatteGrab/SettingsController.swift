@@ -32,7 +32,7 @@ class SettingsController: NSObject, NSWindowDelegate {
     @IBOutlet weak var deleteFromDiskRadioButton : NSButton!
     
     override func awakeFromNib() {
-        defaults = UserDefaults(suiteName: "io.edr.LatteGrab.group")!
+        defaults = UserDefaults(suiteName: "io.edr.latteshare.group")!
         
         if PALoginItemUtility.isCurrentApplicatonInLoginItems() {
             openAtLoginButton.state = .on

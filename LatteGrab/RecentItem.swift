@@ -39,7 +39,7 @@ public class RecentItems {
     private var recentItems : [RecentItem]
     
     public init() {
-        defaults = UserDefaults(suiteName: "io.edr.LatteGrab.group")!
+        defaults = UserDefaults(suiteName: "io.edr.latteshare.group")!
         
         if let r = defaults.object(forKey: RecentItems.kRecentItemsKey) as? Data {
             if let rec = NSKeyedUnarchiver.unarchiveObject(with: r) as? [RecentItem] {
@@ -53,7 +53,7 @@ public class RecentItems {
     }
     
     public func load() {
-        defaults = UserDefaults(suiteName: "io.edr.LatteGrab.group")!
+        defaults = UserDefaults(suiteName: "io.edr.latteshare.group")!
         
         if let r = defaults.object(forKey: RecentItems.kRecentItemsKey) as? Data {
             if let rec = NSKeyedUnarchiver.unarchiveObject(with: r) as? [RecentItem] {
