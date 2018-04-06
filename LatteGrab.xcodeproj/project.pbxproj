@@ -56,6 +56,13 @@
 			remoteGlobalIDString = 6FBF968D1C6B6EEF0039FF4A;
 			remoteInfo = LatteShare;
 		};
+		A08139512076F7F2002FE3C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6F6F38C81C699CE2005D89B8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6FBF968D1C6B6EEF0039FF4A;
+			remoteInfo = LatteShare;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -328,6 +335,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				A08139522076F7F2002FE3C7 /* PBXTargetDependency */,
 			);
 			name = FinderShareExtension;
 			productName = FinderShareExtension;
@@ -491,6 +499,11 @@
 			isa = PBXTargetDependency;
 			target = 6FBF968D1C6B6EEF0039FF4A /* LatteShare */;
 			targetProxy = 6FBF96931C6B6EEF0039FF4A /* PBXContainerItemProxy */;
+		};
+		A08139522076F7F2002FE3C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6FBF968D1C6B6EEF0039FF4A /* LatteShare */;
+			targetProxy = A08139512076F7F2002FE3C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -740,6 +753,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -772,6 +786,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
