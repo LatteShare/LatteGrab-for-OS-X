@@ -40,7 +40,7 @@ public class LatteShare {
     var defaults: UserDefaults
     
     private init() {
-        defaults = UserDefaults(suiteName: "io.edr.latteshare.group")!
+        defaults = UserDefaults(suiteName: "3D7R27DBRZ.group.io.edr.lattegrab")!
         
         if let e = defaults.object(forKey: LatteShare.kServerConnectionStringKey) as? String {
             connectionString = e
