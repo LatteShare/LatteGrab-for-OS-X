@@ -15,8 +15,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet var sbc : StatusBarController!
     @IBOutlet var ac : AuthenticationController!
-
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    
+    func applicationDidFinishLaunching(_ notification: Notification) {
         ssw = ScreenshotWatcher()
         
         ssw.start()
@@ -28,7 +28,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
     }
-
 
 }
 

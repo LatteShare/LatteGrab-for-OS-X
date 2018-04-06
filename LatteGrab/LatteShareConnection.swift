@@ -22,7 +22,7 @@ public class LatteShareConnection {
     var username: String?
     var token: String?
     
-    public enum APIError : ErrorType {
+    public enum APIError : Error {
         case NotLoggedIn
     }
     
@@ -40,12 +40,12 @@ public class LatteShareConnection {
         return username != nil && token != nil
     }
     
-    public func getUserInfo(success: LatteShareUserInformation -> (), failure: String -> ()) throws {
+    public func getUserInfo(success: @escaping (LatteShareUserInformation) -> (), failure: @escaping (String) -> ()) throws {
         if username == nil || token == nil {
             throw APIError.NotLoggedIn
         }
         
-        Alamofire.request(.GET, endpoint + "user", parameters: [ "apiKey": token! ]).responseJSON() { response in
+        Alamofire.request(endpoint + "user", parameters: [ "apiKey": token! ]).responseJSON() { response in
             if let value = response.result.value {
                 let json = JSON(value)
                 
@@ -65,12 +65,12 @@ public class LatteShareConnection {
         }
     }
     
-    public func validateToken(validated: Bool -> ()) throws {
+    public func validateToken(validated: @escaping (Bool) -> ()) throws {
         if username == nil || token == nil {
             throw APIError.NotLoggedIn
         }
         
-        Alamofire.request(.GET, endpoint + "key", parameters: [ "username": username!, "apiKey": token! ]).responseJSON() { response in
+        Alamofire.request(endpoint + "key", parameters: [ "username": username!, "apiKey": token! ]).responseJSON() { response in
             if let value = response.result.value {
                 let json = JSON(value)
                 
@@ -81,8 +81,8 @@ public class LatteShareConnection {
         }
     }
     
-    public func generateToken(username: String, password: String, success: String -> (), failure: String -> ()) {
-        Alamofire.request(.POST, endpoint + "key", parameters: [ "username": username, "password": password ]).responseJSON() { response in
+    public func generateToken(username: String, password: String, success: @escaping (String) -> (), failure: @escaping  (String) -> ()) {
+        Alamofire.request(endpoint + "key", method: .post, parameters: [ "username": username, "password": password ]).responseJSON() { response in
             if let value = response.result.value {
                 let json = JSON(value)
                 
@@ -96,7 +96,7 @@ public class LatteShareConnection {
                 }
             } else {
                 if let error = response.result.error {
-                    failure(error.description)
+                    failure(error.localizedDescription)
                 } else {
                     failure("Unexpected error.")
                 }
@@ -104,16 +104,16 @@ public class LatteShareConnection {
         }
     }
     
-    public func uploadFile(filePath: String, success: String -> (), failure: String -> ()) {
+    public func uploadFile(filePath: String, success: @escaping (String) -> (), failure: @escaping (String) -> ()) {
         let parameters = [
             "username": username!,
             "apiKey": token!
         ]
         
-        Alamofire.upload(.POST, endpoint + "upload", multipartFormData: {
+        Alamofire.upload(multipartFormData: {
             multipartFormData in
             
-            let UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, NSURL(fileURLWithPath: filePath).pathExtension!, nil)?.takeRetainedValue()
+            let UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, NSURL(fileURLWithPath: filePath).pathExtension! as CFString, nil)?.takeRetainedValue()
             
             var mimeType = "application/octet-stream"
             
@@ -121,48 +121,48 @@ public class LatteShareConnection {
                 mimeType = mt as String
             }
             
-            multipartFormData.appendBodyPart(data: NSData(contentsOfFile: filePath)!, name: "upload", fileName: NSURL(fileURLWithPath: filePath).lastPathComponent!, mimeType: mimeType)
+            multipartFormData.append(NSData(contentsOfFile: filePath)! as Data, withName: "upload", fileName: NSURL(fileURLWithPath: filePath).lastPathComponent!, mimeType: mimeType)
             
             for (key, value) in parameters {
-                multipartFormData.appendBodyPart(data: value.dataUsingEncoding(NSUTF8StringEncoding)!, name: key)
+                multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
             }
-        }, encodingCompletion: {
+        }, to: endpoint + "upload", encodingCompletion: {
             encodingResult in
-                
+            
             switch encodingResult {
-                case .Success(let upload, _, _):
-                    upload.responseJSON {
-                        response in
+            case .success(let upload, _, _):
+                upload.responseJSON {
+                    response in
+                    
+                    if let value = response.result.value {
+                        let json = JSON(value)
                         
-                        if let value = response.result.value {
-                            let json = JSON(value)
-                            
-                            if json["success"].boolValue == true {
-                                success(json["url"].stringValue)
-                            } else {
-                                failure("Invalid login details.")
-                            }
+                        if json["success"].boolValue == true {
+                            success(json["url"].stringValue)
                         } else {
-                            if let error = response.result.error {
-                                failure(error.description)
-                            } else {
-                                failure("Unexpected error.")
-                            }
+                            failure("Invalid login details.")
+                        }
+                    } else {
+                        if let error = response.result.error {
+                            failure(error.localizedDescription)
+                        } else {
+                            failure("Unexpected error.")
                         }
                     }
+                }
                 
-                case .Failure(let encodingError):
-                    print(encodingError)
+            case .failure(let encodingError):
+                print(encodingError)
             }
         })
     }
     
-    public func createGroup(fileIdentifiers: [String], success: String -> (), failure: String -> ()) throws {
+    public func createGroup(fileIdentifiers: [String], success: @escaping (String) -> (), failure: @escaping (String) -> ()) throws {
         if username == nil || token == nil {
             throw APIError.NotLoggedIn;
         }
         
-        Alamofire.request(.POST, endpoint + "group", parameters: [ "username": username!, "apiKey": token!, "ids": JSON(fileIdentifiers).rawString()! ]).responseJSON() { response in
+        Alamofire.request(endpoint + "group", method: .post, parameters: [ "username": username!, "apiKey": token!, "ids": JSON(fileIdentifiers).rawString()! ]).responseJSON() { response in
             if let value = response.result.value {
                 let json = JSON(value);
                 
@@ -173,7 +173,7 @@ public class LatteShareConnection {
                 }
             } else {
                 if let error = response.result.error {
-                    failure(error.description)
+                    failure(error.localizedDescription)
                 } else {
                     failure("Unexpected error.")
                 }
@@ -181,12 +181,12 @@ public class LatteShareConnection {
         }
     }
     
-    public func deleteFile(fileIdentifier: String, success: () -> (), failure: String -> ()) throws {
+    public func deleteFile(fileIdentifier: String, success: @escaping () -> (), failure: @escaping (String) -> ()) throws {
         if username == nil || token == nil {
             throw APIError.NotLoggedIn;
         }
         
-        Alamofire.request(.DELETE, endpoint + "file/" + fileIdentifier, parameters: [ "username": username!, "apiKey": token! ]).responseJSON() { response in
+        Alamofire.request(endpoint + "file/" + fileIdentifier, method: .delete, parameters: [ "username": username!, "apiKey": token! ]).responseJSON() { response in
             if let value = response.result.value {
                 let json = JSON(value)
                 
@@ -197,7 +197,7 @@ public class LatteShareConnection {
                 }
             } else {
                 if let error = response.result.error {
-                    failure(error.description)
+                    failure(error.localizedDescription)
                 } else {
                     failure("Unexpected error.")
                 }

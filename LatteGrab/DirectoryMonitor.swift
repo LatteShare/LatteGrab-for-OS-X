@@ -1,79 +1,68 @@
-/*
-Copyright (C) 2016 Apple Inc. All Rights Reserved.
-See LICENSE.txt for this sample’s licensing information
-
-Abstract:
-`DirectoryMonitor` is used to monitor the contents of the provided directory by using a GCD dispatch source.
-*/
-
 import Foundation
 
-/// A protocol that allows delegates of `DirectoryMonitor` to respond to changes in a directory.
-protocol DirectoryMonitorDelegate: class {
-    func directoryMonitorDidObserveChange(directoryMonitor: DirectoryMonitor)
-}
-
-class DirectoryMonitor {
+public class DirectoryMonitor {
+    
+    public typealias EventHandler = (() -> ())
+    
     // MARK: Properties
-    
-    /// The `DirectoryMonitor`'s delegate who is responsible for responding to `DirectoryMonitor` updates.
-    weak var delegate: DirectoryMonitorDelegate?
-    
     /// A file descriptor for the monitored directory.
-    var monitoredDirectoryFileDescriptor: CInt = -1
+    private var fileDescriptor: CInt = -1
     
     /// A dispatch queue used for sending file changes in the directory.
-    let directoryMonitorQueue = dispatch_queue_create("io.edr.lattegrab.directory-monitor", DISPATCH_QUEUE_CONCURRENT)
+    private let queue = DispatchQueue(label: "io.up-n-down.directorymonitor")
     
     /// A dispatch source to monitor a file descriptor created from the directory.
-    var directoryMonitorSource: dispatch_source_t?
+    private var source: DispatchSourceProtocol?
     
     /// URL for the directory being monitored.
-    var URL: NSURL
+    private var url: URL
     
     // MARK: Initializers
-    init(URL: NSURL) {
-        self.URL = URL
+    public init(at url: URL) {
+        self.url = url
     }
     
     // MARK: Monitoring
-    
-    func startMonitoring() {
+    public func startMonitoring(_ handler: @escaping EventHandler) {
         // Listen for changes to the directory (if we are not already).
-        if directoryMonitorSource == nil && monitoredDirectoryFileDescriptor == -1 {
+        if source == nil && fileDescriptor == -1 {
+            NSLog("Start monitoring \(url) for changes.")
+            
             // Open the directory referenced by URL for monitoring only.
-            monitoredDirectoryFileDescriptor = open(URL.path!, O_EVTONLY)
+            fileDescriptor = open(url.path, O_EVTONLY)
             
             // Define a dispatch source monitoring the directory for additions, deletions, and renamings.
-            directoryMonitorSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_VNODE, UInt(monitoredDirectoryFileDescriptor), DISPATCH_VNODE_WRITE, directoryMonitorQueue)
+            source = DispatchSource.makeFileSystemObjectSource(
+                fileDescriptor: fileDescriptor,
+                eventMask: .all,
+                queue: queue
+            )
             
-            // Define the block to call when a file change is detected.
-            dispatch_source_set_event_handler(directoryMonitorSource!) {
-                // Call out to the `DirectoryMonitorDelegate` so that it can react appropriately to the change.
-                self.delegate?.directoryMonitorDidObserveChange(self)
-                
-                return
-            }
+            // Define the work item to call when a file change is detected.
+            source?.setEventHandler(handler: handler)
             
             // Define a cancel handler to ensure the directory is closed when the source is cancelled.
-            dispatch_source_set_cancel_handler(directoryMonitorSource!) {
-                close(self.monitoredDirectoryFileDescriptor)
+            source?.setCancelHandler(handler: {
+                close(self.fileDescriptor)
                 
-                self.monitoredDirectoryFileDescriptor = -1
+                self.fileDescriptor = -1
                 
-                self.directoryMonitorSource = nil
-            }
+                self.source = nil
+            })
             
             // Start monitoring the directory via the source.
-            dispatch_resume(directoryMonitorSource!)
+            source?.resume()
         }
     }
     
-    func stopMonitoring() {
+    public func stopMonitoring() {
         // Stop listening for changes to the directory, if the source has been created.
-        if directoryMonitorSource != nil {
+        if source != nil {
             // Stop monitoring the directory via the source.
-            dispatch_source_cancel(directoryMonitorSource!)
+            source?.cancel()
         }
+        
+        NSLog("Stop monitoring \(url) for changes.")
     }
+    
 }

@@ -1,7 +1,7 @@
 //
 //  Based on https://github.com/okla/swift-xattr
 //
-//  Cleaned up, migrated to class and Swift 2.0
+//  Cleaned up, migrated to class and Swift 2.0... And then migrated again to Swift 4.0
 //
 
 import Foundation
@@ -10,7 +10,7 @@ class ExtendedAttributes {
     /** Description of current errno value */
     
     static func errnoDescription() -> String {
-        return String(UTF8String: strerror(errno))!
+        return String(cString: strerror(errno))
     }
     
     /**
@@ -66,13 +66,13 @@ class ExtendedAttributes {
         if bufLength == -1 {
             return (errnoDescription(), nil)
         } else {
-            let buf = UnsafeMutablePointer<Int8>(malloc(bufLength))
+            let buf = UnsafeMutablePointer<Int8>.allocate(capacity: bufLength)
             
             if listxattr(path, buf, bufLength, 0) == -1 {
                 return (errnoDescription(), nil)
             } else {
                 if var names = NSString(bytes: buf, length: bufLength,
-                    encoding: NSUTF8StringEncoding)?.componentsSeparatedByString("\0") {
+                                        encoding: String.Encoding.utf8.rawValue)?.components(separatedBy: "\0") {
                         names.removeLast()
                         
                         return (nil, names)
