@@ -9,7 +9,6 @@
 import Cocoa
 
 class LocalSettings : NSObject, NSCoding {
-
     static let kLocalSettingsKey = "Local Settings"
     
     static var defaults: UserDefaults = UserDefaults.standard
@@ -47,5 +46,4 @@ class LocalSettings : NSObject, NSCoding {
     func save() {
         LocalSettings.defaults.set(NSKeyedArchiver.archivedData(withRootObject: self), forKey: LocalSettings.kLocalSettingsKey)
     }
-    
 }

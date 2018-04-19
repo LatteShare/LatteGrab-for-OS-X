@@ -11,7 +11,6 @@ import Cocoa
 import LatteShare
 
 class ShareViewController: NSViewController, NSTableViewDataSource {
-    
     @IBOutlet weak var itemCountField: NSTextField!
     
     @IBOutlet weak var tableView: NSTableView!
@@ -110,7 +109,7 @@ class ShareViewController: NSViewController, NSTableViewDataSource {
             
             let outputItems = [outputItem]
             
-            LatteShare.sharedInstance.getConnection().uploadFile(filePath: filePaths[0], success: { url in
+            try? LatteShare.sharedInstance.getConnection().uploadFile(filePath: filePaths[0], success: { url in
                 NSPasteboard.general.clearContents()
                 NSPasteboard.general.writeObjects([url as NSPasteboardWriting])
                 
@@ -141,7 +140,7 @@ class ShareViewController: NSViewController, NSTableViewDataSource {
             })
         } else {
             for path in filePaths {
-                LatteShare.sharedInstance.getConnection().uploadFile(filePath: path, success: { url in
+                try? LatteShare.sharedInstance.getConnection().uploadFile(filePath: path, success: { url in
                     print(url)
                     
                     let arr = url.split{ $0 == "/" }.map(String.init)
@@ -210,5 +209,4 @@ class ShareViewController: NSViewController, NSTableViewDataSource {
         let cancelError = NSError(domain: NSCocoaErrorDomain, code: NSUserCancelledError, userInfo: nil)
         self.extensionContext!.cancelRequest(withError: cancelError)
     }
-
 }

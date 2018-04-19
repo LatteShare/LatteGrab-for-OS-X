@@ -9,7 +9,6 @@
 import Cocoa
 
 public class RecentItem : NSObject, NSCoding {
-    
     public let id : String
     public let date : NSDate
     
@@ -27,11 +26,9 @@ public class RecentItem : NSObject, NSCoding {
         aCoder.encode(id, forKey: "id")
         aCoder.encode(date, forKey: "date")
     }
-    
 }
 
 public class RecentItems {
-    
     static let kRecentItemsKey = "Recent Items"
     
     private var defaults : UserDefaults
@@ -39,7 +36,7 @@ public class RecentItems {
     private var recentItems : [RecentItem]
     
     public init() {
-        defaults = UserDefaults(suiteName: "3D7R27DBRZ.group.io.edr.lattegrab")!
+        defaults = UserDefaults(suiteName: LatteShareSharedSuiteName)!
         
         if let r = defaults.object(forKey: RecentItems.kRecentItemsKey) as? Data {
             if let rec = NSKeyedUnarchiver.unarchiveObject(with: r) as? [RecentItem] {
@@ -53,7 +50,7 @@ public class RecentItems {
     }
     
     public func load() {
-        defaults = UserDefaults(suiteName: "3D7R27DBRZ.group.io.edr.lattegrab")!
+        defaults = UserDefaults(suiteName: LatteShareSharedSuiteName)!
         
         if let r = defaults.object(forKey: RecentItems.kRecentItemsKey) as? Data {
             if let rec = NSKeyedUnarchiver.unarchiveObject(with: r) as? [RecentItem] {

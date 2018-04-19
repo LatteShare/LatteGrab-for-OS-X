@@ -11,7 +11,6 @@ import Cocoa
 import LatteShare
 
 class StatusBarController: NSObject, ScreenshotWatcherDelegate, AuthenticationChangeDelegate {
-    
     @IBOutlet weak var settingsWindow : NSWindow!
     
     @IBOutlet weak var menu : NSMenu!
@@ -123,5 +122,4 @@ class StatusBarController: NSObject, ScreenshotWatcherDelegate, AuthenticationCh
     @IBAction func quit(sender: NSMenuItem) {
         NSApplication.shared.terminate(self)
     }
-    
 }

@@ -15,7 +15,6 @@ protocol AuthenticationChangeDelegate {
 }
 
 class AuthenticationController: NSObject {
-    
     @IBOutlet weak var window : NSWindow!
     
     @IBOutlet weak var usernameField : NSTextField!
@@ -27,6 +26,12 @@ class AuthenticationController: NSObject {
     var delegate : AuthenticationChangeDelegate?
     
     override func awakeFromNib() {
+        window.delegate = self
+        
+        initialize()
+    }
+    
+    private func initialize() {
         if !LatteShare.sharedInstance.hasAuthenticationDetails() {
             window.makeKeyAndOrderFront(self)
             
@@ -65,7 +70,6 @@ class AuthenticationController: NSObject {
         let tempConnection = LatteShareConnection(apiEndpoint: LatteShare.generateEndpoint(server: connectionString))
         
         tempConnection.generateToken(username: usernameField.stringValue, password: passwordField.stringValue, success: { token in
-            
             LatteShare.sharedInstance.connectionString = connectionString
             LatteShare.sharedInstance.username = self.usernameField.stringValue
             LatteShare.sharedInstance.token = token
@@ -78,9 +82,7 @@ class AuthenticationController: NSObject {
             self.delegate?.authenticationStateDidChange(loggedIn: true)
             
             self.window.close()
-            
         }, failure: { error in
-            
             let alert = NSAlert()
             
             alert.messageText = "Error!"
@@ -91,8 +93,12 @@ class AuthenticationController: NSObject {
             self.loginButton.isEnabled = true
             
             self.delegate?.authenticationStateDidChange(loggedIn: false)
-            
         })
     }
+}
 
+extension AuthenticationController : NSWindowDelegate {
+    func windowDidBecomeKey(_ notification: Notification) {
+        initialize()
+    }
 }

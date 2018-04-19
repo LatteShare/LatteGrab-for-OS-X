@@ -1,7 +1,6 @@
 import Foundation
 
 public class DirectoryMonitor {
-    
     public typealias EventHandler = (() -> ())
     
     // MARK: Properties
@@ -26,7 +25,7 @@ public class DirectoryMonitor {
     public func startMonitoring(_ handler: @escaping EventHandler) {
         // Listen for changes to the directory (if we are not already).
         if source == nil && fileDescriptor == -1 {
-            NSLog("Start monitoring \(url) for changes.")
+            print("Started monitoring \(url) for changes.")
             
             // Open the directory referenced by URL for monitoring only.
             fileDescriptor = open(url.path, O_EVTONLY)
@@ -62,7 +61,6 @@ public class DirectoryMonitor {
             source?.cancel()
         }
         
-        NSLog("Stop monitoring \(url) for changes.")
+        print("Stopped monitoring \(url) for changes.")
     }
-    
 }

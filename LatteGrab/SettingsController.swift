@@ -11,12 +11,12 @@ import Cocoa
 import LatteShare
 
 class SettingsController: NSObject, NSWindowDelegate {
-    
     var defaults : UserDefaults!
     
     var localSettings : LocalSettings!
     
     @IBOutlet weak var window : NSWindow!
+    @IBOutlet weak var loginWindow : NSWindow!
     
     @IBOutlet weak var openAtLoginButton : NSButton!
     
@@ -114,4 +114,10 @@ class SettingsController: NSObject, NSWindowDelegate {
         NSWorkspace.shared.open(URL(string: "https://github.com/LatteShare/LatteGrab-for-OS-X")!)
     }
     
+    @IBAction func logOut(sender: NSButton!) {
+        LatteShare.sharedInstance.logOut()
+        
+        window.close()
+        loginWindow.makeKeyAndOrderFront(self)
+    }
 }

@@ -17,7 +17,6 @@ public struct LatteShareUserInformation {
 }
 
 public class LatteShareConnection {
-    
     let endpoint: String
     var username: String?
     var token: String?
@@ -104,7 +103,11 @@ public class LatteShareConnection {
         }
     }
     
-    public func uploadFile(filePath: String, success: @escaping (String) -> (), failure: @escaping (String) -> ()) {
+    public func uploadFile(filePath: String, additionalParameters: [String: Any] = [:], success: @escaping (String) -> (), failure: @escaping (String) -> ()) throws {
+        if username == nil || token == nil {
+            throw APIError.NotLoggedIn;
+        }
+        
         let parameters = [
             "username": username!,
             "apiKey": token!
@@ -124,7 +127,17 @@ public class LatteShareConnection {
             multipartFormData.append(NSData(contentsOfFile: filePath)! as Data, withName: "upload", fileName: NSURL(fileURLWithPath: filePath).lastPathComponent!, mimeType: mimeType)
             
             for (key, value) in parameters {
-                multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
+                multipartFormData.append(value.data(using: .utf8)!, withName: key)
+            }
+            
+            for (key, value) in additionalParameters {
+                if let v = value as? Int {
+                    multipartFormData.append(String(v).data(using: .utf8)!, withName: key)  //  There's probably a better way to do this...
+                } else if let v = value as? String {
+                    multipartFormData.append(v.data(using: .utf8)!, withName: key)
+                } else {
+                    print("Ignoring key \"\(key)\", since it's neither an Int or String type...")
+                }
             }
         }, to: endpoint + "upload", encodingCompletion: {
             encodingResult in

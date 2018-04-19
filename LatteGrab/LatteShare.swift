@@ -40,7 +40,7 @@ public class LatteShare {
     var defaults: UserDefaults
     
     private init() {
-        defaults = UserDefaults(suiteName: "3D7R27DBRZ.group.io.edr.lattegrab")!
+        defaults = UserDefaults(suiteName: LatteShareSharedSuiteName)!
         
         if let e = defaults.object(forKey: LatteShare.kServerConnectionStringKey) as? String {
             connectionString = e
@@ -85,6 +85,18 @@ public class LatteShare {
         defaults.set(connectionString, forKey: LatteShare.kServerConnectionStringKey)
         defaults.set(username, forKey: LatteShare.kUsernameKey)
         defaults.set(token, forKey: LatteShare.kTokenKey)
+        
+        defaults.synchronize()
+    }
+    
+    public func logOut() {
+        connectionString = LatteShare.kDefaultServer
+        username = nil
+        token = nil
+        
+        defaults.removeObject(forKey: LatteShare.kServerConnectionStringKey)
+        defaults.removeObject(forKey: LatteShare.kUsernameKey)
+        defaults.removeObject(forKey: LatteShare.kTokenKey)
         
         defaults.synchronize()
     }
