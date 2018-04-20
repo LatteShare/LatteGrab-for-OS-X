@@ -17,13 +17,15 @@ class StatusBarController: NSObject, ScreenshotWatcherDelegate, AuthenticationCh
     @IBOutlet weak var recentFilesMenu : NSMenu!
     
     @IBOutlet weak var loggedInMenuItem : NSMenuItem!
+    @IBOutlet weak var recentFilesMenuItem : NSMenuItem!
+    @IBOutlet weak var settingsMenuItem : NSMenuItem!
     
     var statusItem : NSStatusItem!
     
     override func awakeFromNib() {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         
-        statusItem.image = NSImage(named: NSImage.Name("MenuBarIcon"))
+                statusItem.image = NSImage(named: NSImage.Name("MenuBarIcon"))
         statusItem.menu = menu
         
         refresh()
@@ -40,8 +42,14 @@ class StatusBarController: NSObject, ScreenshotWatcherDelegate, AuthenticationCh
         
         if let u = LatteShare.sharedInstance.username {
             loggedInMenuItem.title = "Connected as \(u)"
+            
+            recentFilesMenuItem.isHidden = false
+            settingsMenuItem.isHidden = false
         } else {
             loggedInMenuItem.title = "Not logged in..."
+            
+            recentFilesMenuItem.isHidden = true
+            settingsMenuItem.isHidden = true
         }
     }
     
@@ -89,7 +97,6 @@ class StatusBarController: NSObject, ScreenshotWatcherDelegate, AuthenticationCh
         
         do {
             try LatteShare.sharedInstance.getConnection().deleteFile(fileIdentifier: arr.last!, success: {
-                
                 let ris = RecentItems()
                 
                 let _ = ris.removeRecentItem(item: ri)
@@ -97,16 +104,13 @@ class StatusBarController: NSObject, ScreenshotWatcherDelegate, AuthenticationCh
                 DispatchQueue.main.async {
                     self.refresh()
                 }
-                    
             }, failure: { error in
-                
                 let alert = NSAlert()
                 
                 alert.messageText = "Error!"
                 alert.informativeText = error
                 
                 alert.runModal()
-                
             })
         } catch let e {
             print("Exception while attempting to delete file! \(e)")

@@ -51,7 +51,6 @@ class ScreenshotWatcher {
                             if attrNames.names != nil {
                                 if attrNames.names!.contains("com.apple.metadata:kMDItemIsScreenCapture") || attrNames.names!.contains("com.apple.metadata:kMDItemScreenCaptureGlobalRect") || attrNames.names!.contains("com.apple.metadata:kMDItemScreenCaptureType") {
                                     try? LatteShare.sharedInstance.getConnection().uploadFile(filePath: fullElemPath, success: { url in
-                                        
                                         NSPasteboard.general.clearContents()
                                         NSPasteboard.general.writeObjects([url as NSPasteboardWriting])
                                         
@@ -85,16 +84,13 @@ class ScreenshotWatcher {
                                                 print("Exception while removing item! \(e)")
                                             }
                                         }
-                                        
                                     }, failure: { error in
-                                        
                                         let notification = NSUserNotification()
                                         
                                         notification.title = "Upload Error!"
                                         notification.informativeText = error
                                         
                                         NSUserNotificationCenter.default.deliver(notification)
-                                        
                                     })
                                 }
                             }
