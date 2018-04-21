@@ -50,7 +50,7 @@ class ScreenshotWatcher {
                             
                             if attrNames.names != nil {
                                 if attrNames.names!.contains("com.apple.metadata:kMDItemIsScreenCapture") || attrNames.names!.contains("com.apple.metadata:kMDItemScreenCaptureGlobalRect") || attrNames.names!.contains("com.apple.metadata:kMDItemScreenCaptureType") {
-                                    try? LatteShare.sharedInstance.getConnection().uploadFile(filePath: fullElemPath, success: { url in
+                                    try? LatteShare.sharedInstance.getConnection().uploadFile(filePath: fullElemPath, additionalParameters: [:], success: { url in
                                         NSPasteboard.general.clearContents()
                                         NSPasteboard.general.writeObjects([url as NSPasteboardWriting])
                                         
